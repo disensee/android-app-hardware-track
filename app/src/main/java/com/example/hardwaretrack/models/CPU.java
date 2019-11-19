@@ -1,0 +1,4 @@
+package com.example.hardwaretrack.models;
+
+public class CPU {
+}
