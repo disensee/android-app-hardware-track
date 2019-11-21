@@ -8,7 +8,9 @@ public class Computer {
     private boolean customBuild;
     private CPU processor;
     private GPU graphicsProcessor;
-    private Drive drive;
+    private Drive drive1;
+    private Drive drive2;
+    private Drive drive3;
     private RAM ram;
 
     public long getId() {
@@ -67,12 +69,28 @@ public class Computer {
         this.graphicsProcessor = graphicsProcessor;
     }
 
-    public Drive getDrive() {
-        return drive;
+    public Drive getDrive1() {
+        return drive1;
     }
 
-    public void setDrive(Drive drive) {
-        this.drive = drive;
+    public void setDrive1(Drive drive1) {
+        this.drive1 = drive1;
+    }
+
+    public Drive getDrive2() {
+        return drive2;
+    }
+
+    public void setDrive2(Drive drive2) {
+        this.drive2 = drive2;
+    }
+
+    public Drive getDrive3() {
+        return drive3;
+    }
+
+    public void setDrive3(Drive drive3) {
+        this.drive3 = drive3;
     }
 
     public RAM getRam() {

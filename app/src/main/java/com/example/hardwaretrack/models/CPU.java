@@ -1,7 +1,7 @@
 package com.example.hardwaretrack.models;
 
 public class CPU {
-
+    private long id;
     private String manufacturer;
     private String model;
     private int coreCount;
