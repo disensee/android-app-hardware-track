@@ -2,12 +2,21 @@ package com.example.hardwaretrack.models;
 
 public class GPU {
 
+    private long id;
     private String manufacturer;
     private String model;
     private long coreCount;
     private long baseClock;
     private long boostClock;
     private String vRam;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getManufacturer() {
         return manufacturer;

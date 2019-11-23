@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.example.hardwaretrack.models.Computer;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -32,7 +34,7 @@ public class SQLComputerDataAccess {
 
 
         // We should create static constants for the table name, and all column names
-        public static final String TABLE_NAME = "computer";
+        public static final String TABLE_COMPUTER_NAME = "computer";
         public static final String COLUMN_COMPUTER_ID = "_id";
         public static final String COLUMN_COMPUTER_TYPE = "type";
         public static final String COLUMN_COMPUTER_MANUFACTURER = "manufacturer";
@@ -41,13 +43,12 @@ public class SQLComputerDataAccess {
         public static final String COLUMN_COMPUTER_PROCESSOR = "processor";
         public static final String COLUMN_COMPUTER_GRAPHICS_PROCESSOR = "graphicsProcessor";
         public static final String COLUMN_COMPUTER_RAM = "ram";
-        public static final String COLUMN_COMPUTER_DRIVE1 = "drive1";
-        public static final String COLUMN_COMPUTER_DRIVE2 = "drive2";
-        public static final String COLUMN_COMPUTER_DRIVE3 = "drive3";
+        public static final String COLUMN_COMPUTER_DRIVE = "drive";
 
-        public static final String TABLE_CREATE = String.format("create table %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER," +
-                                                    "%s INTEGER, %s INTEGER, %s INTEGER, %s INTEGER, %s INTEGER)",
-                TABLE_NAME,
+
+        public static final String TABLE_COMPUTER_CREATE = String.format("create table %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER," +
+                                                    "%s INTEGER, %s INTEGER, %s INTEGER)",
+                TABLE_COMPUTER_NAME,
                 COLUMN_COMPUTER_ID,
                 COLUMN_COMPUTER_TYPE,
                 COLUMN_COMPUTER_MANUFACTURER,
@@ -56,17 +57,114 @@ public class SQLComputerDataAccess {
                 COLUMN_COMPUTER_PROCESSOR,
                 COLUMN_COMPUTER_GRAPHICS_PROCESSOR,
                 COLUMN_COMPUTER_RAM,
-                COLUMN_COMPUTER_DRIVE1,
-                COLUMN_COMPUTER_DRIVE2,
-                COLUMN_COMPUTER_DRIVE3
+                COLUMN_COMPUTER_DRIVE
         );
 
-    /*
-        @Override
-        public ArrayList<Task> getAllTasks() {
+        public static final String TABLE_CPU_NAME = "cpu";
+        public static final String COLUMN_CPU_ID = "_id";
+        public static final String COLUMN_CPU_MANUFACTURER = "manufacturer";
+        public static final String COLUMN_CPU_MODEL = "model";
+        public static final String COLUMN_CPU_CORE_COUNT = "coreCount";
+        public static final String COLUMN_CPU_THREAD_COUNT = "threadCount";
+        public static final String COLUMN_CPU_BASE_CLOCK = "baseClock";
+        public static final String COLUMN_CPU_BOOST_CLOCK = "boostClock";
 
-            ArrayList<Task> tasks = new ArrayList<>();
-            String query = String.format("SELECT %s, %s, %s, %s FROM %s", COLUMN_TASK_ID, COLUMN_DESCRIPTION, COLUMN_DUE, COLUMN_DONE, TABLE_NAME);
+        public static final String TABLE_CPU_CREATE = String.format("create table %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER, %s REAL, %s REAL, FOREIGN KEY(%s) REFERENCES %s(%s))",
+
+                TABLE_CPU_NAME,
+                COLUMN_CPU_ID,
+                COLUMN_CPU_MANUFACTURER,
+                COLUMN_CPU_MODEL,
+                COLUMN_CPU_CORE_COUNT,
+                COLUMN_CPU_THREAD_COUNT,
+                COLUMN_CPU_BASE_CLOCK,
+                COLUMN_CPU_BOOST_CLOCK,
+                COLUMN_CPU_ID,
+                TABLE_COMPUTER_NAME,
+                COLUMN_COMPUTER_PROCESSOR
+                );
+
+        public static final String TABLE_DRIVE_NAME = "drive";
+        public static final String COLUMN_DRIVE_ID = "_id";
+        public static final String COLUMN_DRIVE_MANUFACTURER = "manufacturer";
+        public static final String COLUMN_DRIVE_MODEL = "model";
+        public static final String COLUMN_DRIVE_TYPE = "type";
+        public static final String COLUMN_DRIVE_FORM_FACTOR = "formFactor";
+        public static final String COLUMN_DRIVE_TRANSFER_PROTOCOL = "transferProtocol";
+        public static final String COLUMN_DRIVE_CAPACITY = "capacity";
+        public static final String COLUMN_DRIVE_MAX_TRANSFER_RATE = "maxTransferRate";
+
+        public static final String TABLE_DRIVE_CREATE = String.format("create table %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER, FOREIGN KEY(%s) REFERENCES %s(%s))",
+
+                TABLE_DRIVE_NAME,
+                COLUMN_DRIVE_ID,
+                COLUMN_DRIVE_MANUFACTURER,
+                COLUMN_DRIVE_MODEL,
+                COLUMN_DRIVE_TYPE,
+                COLUMN_DRIVE_FORM_FACTOR,
+                COLUMN_DRIVE_TRANSFER_PROTOCOL,
+                COLUMN_DRIVE_CAPACITY,
+                COLUMN_DRIVE_MAX_TRANSFER_RATE,
+                COLUMN_DRIVE_ID,
+                TABLE_COMPUTER_NAME,
+                COLUMN_COMPUTER_DRIVE
+                );
+
+        public static final String TABLE_GPU_NAME = "gpu";
+        public static final String COLUMN_GPU_ID = "_id";
+        public static final String COLUMN_GPU_MANUFACTURER = "manufacturer";
+        public static final String COLUMN_GPU_MODEL = "model";
+        public static final String COLUMN_GPU_CORE_COUNT = "coreCount";
+        public static final String COLUMN_GPU_BASE_CLOCK = "baseClock";
+        public static final String COLUMN_GPU_BOOST_CLOCK = "boostClock";
+        public static final String COLUMN_GPU_VRAM = "vRam";
+
+        public static final String TABLE_GPU_CREATE = String.format("create table %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER, %s INTEGER, %s TEXT, FOREIGN KEY(%s) REFERENCES %s(%s))",
+
+                TABLE_GPU_NAME,
+                COLUMN_GPU_ID,
+                COLUMN_GPU_MANUFACTURER,
+                COLUMN_GPU_MODEL,
+                COLUMN_GPU_CORE_COUNT,
+                COLUMN_GPU_BASE_CLOCK,
+                COLUMN_GPU_BOOST_CLOCK,
+                COLUMN_GPU_VRAM,
+                COLUMN_GPU_ID,
+                TABLE_COMPUTER_NAME,
+                COLUMN_COMPUTER_GRAPHICS_PROCESSOR
+                );
+
+        public static final String TABLE_RAM_NAME = "ram";
+        public static final String COLUMN_RAM_ID = "_id";
+        public static final String COLUMN_RAM_MANUFACTURER = "manufacturer";
+        public static final String COLUMN_RAM_MODEL = "model";
+        public static final String COLUMN_RAM_TYPE = "type";
+        public static final String COLUMN_RAM_CAPACITY = "capacity";
+        public static final String COLUMN_RAM_SPEED = "speed";
+        public static final String COLUMN_RAM_FORM_FACTOR = "formFactor";
+
+        public static final String TABLE_RAM_CREATE = String.format("create table %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER, %s TEXT, FOREIGN KEY(%s) REFERENCES %s(%s))",
+
+                TABLE_RAM_NAME,
+                COLUMN_RAM_ID,
+                COLUMN_RAM_MANUFACTURER,
+                COLUMN_RAM_MODEL,
+                COLUMN_RAM_TYPE,
+                COLUMN_RAM_CAPACITY,
+                COLUMN_RAM_SPEED,
+                COLUMN_RAM_FORM_FACTOR,
+                COLUMN_RAM_ID,
+                TABLE_COMPUTER_NAME,
+                COLUMN_COMPUTER_RAM
+                );
+
+
+        //@Override TODO - IMPLEMENT INTERFACE?
+        public ArrayList<Computer> getAllComputers() {
+
+            ArrayList<Computer> computer = new ArrayList<>();
+            String query = String.format("SELECT %s, %s, %s, %s, %s, %s, %s, %s, %s FROM %s", COLUMN_COMPUTER_ID, COLUMN_COMPUTER_TYPE, COLUMN_COMPUTER_MANUFACTURER, COLUMN_COMPUTER_MODEL, COLUMN_COMPUTER_CUSTOM_BUILD, COLUMN_COMPUTER_PROCESSOR,
+                                        COLUMN_COMPUTER_GRAPHICS_PROCESSOR, COLUMN_COMPUTER_DRIVE, COLUMN_COMPUTER_RAM, TABLE_COMPUTER_NAME);
 
             Cursor c = database.rawQuery(query, null); //cursor is query result
 
@@ -77,19 +175,17 @@ public class SQLComputerDataAccess {
 
                 while (!c.isAfterLast()) { //while cursor is not after last row
                     //Assign data to appropriate instance variables
-                    long id = c.getLong(0);
-                    String desc = c.getString(1);
-                    String due = c.getString(2);
-                    boolean done = (c.getLong(3) == 1 ? true : false);//conditional operator -- if c.getlong is equal to 1 return true, else return false
+                    long computer_id = c.getLong(0);
+                    String computer_type  = c.getString(1);
+                    String computer_manufacturer = c.getString(2);
+                    String computer_model = c.getString(3);
+                    boolean comuter_custom_build = (c.getLong(4) == 1 ? true : false);//conditional operator -- if c.getlong is equal to 1 return true, else return false
+                    String computer_processor = c.getString(5);
+                    String computer_gpu = c.getString(6);
+                    String computer_drive = c.getString(7);
+                    String computer_ram = c.getString(8);
 
-                    Date dueDate = null;
-                    //convert date string from DB to Date. SQLite cannot store dates
-                    try {
-                        dueDate = dateFormat.parse(due);
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-
+                    /* -- TODO - INCLUDE JOINS FOR SQL QUERY - CREATE NEW CONSTRUCTOR FOR COMPUTER AND FINISH THIS METHOD!!
                     Task t = new Task(id, desc, dueDate, done); //assign variables to Task object
                     tasks.add(t);//add task object to array list
                     c.moveToNext(); //move to next row -- DON'T FORGET THIS LINE!!!!!!

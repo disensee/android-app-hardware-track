@@ -1,18 +1,22 @@
 package com.example.hardwaretrack.models;
 
 public class Drive {
-
+    private long id;
     private String manufacturer;
     private String model;
     private String type;
     private String formFactor;
     private String transferProtocol;
-    private String capacity;
+    private long capacity;
     private long maxTransferRate;
 
     public String getManufacturer() {
         return manufacturer;
     }
+
+    public long getId() { return id; }
+
+    public void setId(long id) { this.id = id; }
 
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
@@ -50,11 +54,11 @@ public class Drive {
         this.transferProtocol = transferProtocol;
     }
 
-    public String getCapacity() {
+    public long getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(String capacity) {
+    public void setCapacity(long capacity) {
         this.capacity = capacity;
     }
 

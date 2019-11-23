@@ -2,12 +2,19 @@ package com.example.hardwaretrack.models;
 
 public class RAM {
 
+    private long id;
     private String manufacturer;
     private String model;
     private String type;
-    private String capacity;
+    private long capacity;
     private long speed;
     private String formFactor;
+
+    public long getId() { return id; }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public String getManufacturer() {
         return manufacturer;
@@ -33,11 +40,11 @@ public class RAM {
         this.type = type;
     }
 
-    public String getCapacity() {
+    public long getCapacity() {
         return capacity;
     }
 
-    public void setCapacity(String capacity) {
+    public void setCapacity(long capacity) {
         this.capacity = capacity;
     }
 

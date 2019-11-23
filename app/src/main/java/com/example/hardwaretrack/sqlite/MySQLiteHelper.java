@@ -31,16 +31,32 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 //        db.execSQL(testSql);
 //        Log.d(TAG, testSql);
 //
-//        // Insert a row into the computer table (for testing)
-//        String testInsert = "insert into computer (type, manufacturer, model, customBuild, processor, graphicsProcessor, ram, drive1, drive2, drive3) " +
-//                            "values ('desktop', 'Asus', 'Z370-A', 1, 1, 1, 1, 1, 1, 1 );";
+
+//        Insert a row into the computer table (for testing)
+//        String testInsert = "insert into computer (type, manufacturer, model, customBuild, processor, graphicsProcessor, ramSlot1, ramSlot2, ramSlot3, ramSlot4, drive1, drive2, drive3) " +
+//                "values ('desktop', 'Asus', 'Z370-A', 1, 1, 1, 1, 1, 1, 1, 1 , 1, 1 );";
 //        db.execSQL(testInsert);
 //        Log.d(TAG, testInsert);
 
-
-        String computerTableSQL = SQLComputerDataAccess.TABLE_CREATE;
+        String computerTableSQL = SQLComputerDataAccess.TABLE_COMPUTER_CREATE;
         db.execSQL(computerTableSQL);
         Log.d(TAG, computerTableSQL);
+
+        String cpuTableSQL = SQLComputerDataAccess.TABLE_CPU_CREATE;
+        db.execSQL(cpuTableSQL);
+        Log.d(TAG, cpuTableSQL);
+
+        String driveTableSQL = SQLComputerDataAccess.TABLE_DRIVE_CREATE;
+        db.execSQL(driveTableSQL);
+        Log.d(TAG, driveTableSQL);
+
+        String gpuTableSQL = SQLComputerDataAccess.TABLE_GPU_CREATE;
+        db.execSQL(gpuTableSQL);
+        Log.d(TAG, gpuTableSQL);
+
+        String ramTableSQL = SQLComputerDataAccess.TABLE_RAM_CREATE;
+        db.execSQL(ramTableSQL);
+        Log.d(TAG, ramTableSQL);
 
     }
 
