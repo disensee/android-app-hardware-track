@@ -8,6 +8,9 @@ import android.util.Log;
 
 import com.example.hardwaretrack.models.CPU;
 import com.example.hardwaretrack.models.Computer;
+import com.example.hardwaretrack.models.Drive;
+import com.example.hardwaretrack.models.GPU;
+import com.example.hardwaretrack.models.RAM;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -330,7 +333,7 @@ public class SQLComputerDataAccess {
             CPU cpu = new CPU(cpuId, cpuManufacturer, cpuModel, cpuCoreCount, cpuThreadCount, cpuBaseClock, cpuBoostClock);
             return  cpu;
 
-    }
+        }
 
         public CPU insertTask(CPU cpu) {
 
@@ -368,6 +371,295 @@ public class SQLComputerDataAccess {
             return rowsDeleted;
         }
 
+        //DRIVE DATA ACCESS METHODS
+        public ArrayList<Drive> getAllDrives() {
+
+            ArrayList<Drive> allDrives = new ArrayList<>();
+            String query = String.format("SELECT %s, %s, %s, %s, %s, %s, %s, %s FROM %s", COLUMN_DRIVE_ID, COLUMN_DRIVE_MANUFACTURER, COLUMN_DRIVE_MODEL, COLUMN_DRIVE_TYPE, COLUMN_DRIVE_FORM_FACTOR,
+                    COLUMN_DRIVE_TRANSFER_PROTOCOL, COLUMN_DRIVE_CAPACITY, COLUMN_DRIVE_MAX_TRANSFER_RATE, TABLE_DRIVE_NAME);
+
+            Cursor c = database.rawQuery(query, null); //cursor is query result
+
+            // make sure we got some results from the db before processing them
+            if ((c != null) && (c.getCount() > 0)) { //check if cursor is not null and has rows
+
+                c.moveToFirst(); //move cursor to first row
+
+                while (!c.isAfterLast()) { //while cursor is not after last row
+                    //Assign data to appropriate instance variables
+                    long driveId = c.getLong(0);
+                    String driveManufacturer = c.getString(1);
+                    String driveModel = c.getString(2);
+                    String driveType = c.getString(3);
+                    String driveFormFactor = c.getString(4);
+                    String driveTransferProtocol = c.getString(5);
+                    long driveCapacity = c.getLong(6);
+                    long driveMaxTransferRate = c.getLong(7);
+
+
+                    Drive drive = new Drive(driveId, driveManufacturer, driveModel, driveType, driveFormFactor, driveTransferProtocol, driveCapacity, driveMaxTransferRate); //assign variables to drive object
+                    allDrives.add(drive);//add drive to array list
+                    c.moveToNext(); //move to next row -- DON'T FORGET THIS LINE!!!!!!
+                }
+                c.close(); //close cursor object to save resources
+            }
+            Log.d(TAG, query);
+            return allDrives;
+        }
+
+        public Drive getDriveById(long id) {
+
+            String query = String.format("SELECT %s, %s, %s, %s, %s, %s, %s, %s FROM %s WHERE %s = %d", COLUMN_DRIVE_ID, COLUMN_DRIVE_MANUFACTURER, COLUMN_DRIVE_MODEL, COLUMN_DRIVE_TYPE, COLUMN_DRIVE_FORM_FACTOR,
+                    COLUMN_DRIVE_TRANSFER_PROTOCOL, COLUMN_DRIVE_CAPACITY, COLUMN_DRIVE_MAX_TRANSFER_RATE, TABLE_DRIVE_NAME, COLUMN_DRIVE_ID, id);
+
+            Cursor c = database.rawQuery(query, null);
+            c.moveToFirst();
+
+            long driveId = c.getLong(0);
+            String driveManufacturer = c.getString(1);
+            String driveModel = c.getString(2);
+            String driveType = c.getString(3);
+            String driveFormFactor = c.getString(4);
+            String driveTransferProtocol = c.getString(5);
+            long driveCapacity = c.getLong(6);
+            long driveMaxTransferRate = c.getLong(7);
+
+
+
+            c.close();
+
+            Drive drive = new Drive(driveId, driveManufacturer, driveModel, driveType, driveFormFactor, driveTransferProtocol, driveCapacity, driveMaxTransferRate);
+            return drive;
+
+        }
+
+        public Drive insertDrive(Drive d) {
+
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_DRIVE_MANUFACTURER, d.getManufacturer());
+            values.put(COLUMN_DRIVE_MODEL, d.getModel());
+            values.put(COLUMN_DRIVE_TYPE, d.getType());
+            values.put(COLUMN_DRIVE_FORM_FACTOR, d.getFormFactor());
+            values.put(COLUMN_DRIVE_TRANSFER_PROTOCOL, d.getTransferProtocol());
+            values.put(COLUMN_DRIVE_CAPACITY, d.getCapacity());
+            values.put(COLUMN_DRIVE_MAX_TRANSFER_RATE, d.getMaxTransferRate());
+            long insertId = database.insert(TABLE_DRIVE_NAME, null, values);
+            // note: insertId will be -1 if the insert failed
+
+            d.setId(insertId); //set task object ID with auto incremented ID
+            return d;
+        }
+
+        public Drive updateDrive(Drive d) {
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_DRIVE_MANUFACTURER, d.getManufacturer());
+            values.put(COLUMN_DRIVE_MODEL, d.getModel());
+            values.put(COLUMN_DRIVE_TYPE, d.getType());
+            values.put(COLUMN_DRIVE_FORM_FACTOR, d.getFormFactor());
+            values.put(COLUMN_DRIVE_TRANSFER_PROTOCOL, d.getTransferProtocol());
+            values.put(COLUMN_DRIVE_CAPACITY, d.getCapacity());
+            values.put(COLUMN_DRIVE_MAX_TRANSFER_RATE, d.getMaxTransferRate());
+            int rowsUpdated = database.update(TABLE_DRIVE_NAME, values, COLUMN_DRIVE_ID + " = " + d.getId(), null);
+            // this method returns the number of rows that were updated in the db
+            // so that you could use it to confirm that your update worked
+            return d;
+        }
+
+        public int deleteDrive(Drive d) {
+            int rowsDeleted = database.delete(TABLE_DRIVE_NAME, COLUMN_DRIVE_ID + " = " + d.getId(), null);
+            // the above method returns the number of row that were deleted
+            return rowsDeleted;
+        }
+
+        //GPU DATA ACCESS METHODS
+        public ArrayList<GPU> getAllGPUs() {
+
+            ArrayList<GPU> allGPUs = new ArrayList<>();
+            String query = String.format("SELECT %s, %s, %s, %s, %s, %s, %s FROM %s", COLUMN_GPU_ID, COLUMN_GPU_MANUFACTURER, COLUMN_GPU_MODEL, COLUMN_GPU_CORE_COUNT, COLUMN_GPU_BASE_CLOCK,
+                           COLUMN_GPU_BOOST_CLOCK, COLUMN_GPU_VRAM, TABLE_GPU_NAME);
+
+            Cursor c = database.rawQuery(query, null); //cursor is query result
+
+            // make sure we got some results from the db before processing them
+            if ((c != null) && (c.getCount() > 0)) { //check if cursor is not null and has rows
+
+                c.moveToFirst(); //move cursor to first row
+
+                while (!c.isAfterLast()) { //while cursor is not after last row
+                    //Assign data to appropriate instance variables
+                    long gpuId = c.getLong(0);
+                    String gpuManufacturer = c.getString(1);
+                    String gpuModel = c.getString(2);
+                    long gpuCoreCount = c.getLong(3);
+                    long gpuBaseBlock = c.getLong(4);
+                    long gpuBoostClock = c.getLong(5);
+                    String gpuVram = c.getString(6);
+
+
+                    GPU gpu = new GPU(gpuId, gpuManufacturer, gpuModel, gpuCoreCount, gpuBaseBlock, gpuBoostClock, gpuVram); //assign variables to gpu object
+                    allGPUs.add(gpu);//add gpu to array list
+                    c.moveToNext(); //move to next row -- DON'T FORGET THIS LINE!!!!!!
+                }
+                c.close(); //close cursor object to save resources
+            }
+            Log.d(TAG, query);
+            return allGPUs;
+        }
+
+        public GPU getGPUById(long id){
+            String query = String.format("SELECT %s, %s, %s, %s, %s, %s, %s FROM %s WHERE %s = %d", COLUMN_GPU_ID, COLUMN_GPU_MANUFACTURER, COLUMN_GPU_MODEL, COLUMN_GPU_CORE_COUNT, COLUMN_GPU_BASE_CLOCK,
+                    COLUMN_GPU_BOOST_CLOCK, COLUMN_GPU_VRAM, TABLE_GPU_NAME, COLUMN_GPU_ID, id);
+
+            Cursor c = database.rawQuery(query, null);
+            c.moveToFirst();
+
+            long gpuId = c.getLong(0);
+            String gpuManufacturer = c.getString(1);
+            String gpuModel = c.getString(2);
+            long gpuCoreCount = c.getLong(3);
+            long gpuBaseBlock = c.getLong(4);
+            long gpuBoostClock = c.getLong(5);
+            String gpuVram = c.getString(6);
+
+
+
+            c.close();
+
+            GPU gpu = new GPU(gpuId, gpuManufacturer, gpuModel, gpuCoreCount, gpuBaseBlock, gpuBoostClock, gpuVram);
+            return gpu;
+        }
+
+        public GPU insertGPU(GPU gpu) {
+
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_GPU_MANUFACTURER, gpu.getManufacturer());
+            values.put(COLUMN_GPU_MODEL, gpu.getModel());
+            values.put(COLUMN_GPU_CORE_COUNT, gpu.getCoreCount());
+            values.put(COLUMN_GPU_BASE_CLOCK, gpu.getCoreCount());
+            values.put(COLUMN_GPU_BOOST_CLOCK, gpu.getBoostClock());
+            values.put(COLUMN_GPU_VRAM, gpu.getvRam());
+            long insertId = database.insert(TABLE_GPU_NAME, null, values);
+            // note: insertId will be -1 if the insert failed
+
+            gpu.setId(insertId); //set task object ID with auto incremented ID
+            return gpu;
+        }
+
+        public GPU updateGPU(GPU gpu){
+
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_GPU_MANUFACTURER, gpu.getManufacturer());
+            values.put(COLUMN_GPU_MODEL, gpu.getModel());
+            values.put(COLUMN_GPU_CORE_COUNT, gpu.getCoreCount());
+            values.put(COLUMN_GPU_BASE_CLOCK, gpu.getCoreCount());
+            values.put(COLUMN_GPU_BOOST_CLOCK, gpu.getBoostClock());
+            values.put(COLUMN_GPU_VRAM, gpu.getvRam());
+            int rowsUpdated = database.update(TABLE_GPU_NAME, values, COLUMN_GPU_ID + " = " + gpu.getId(), null);
+            // this method returns the number of rows that were updated in the db
+            // so that you could use it to confirm that your update worked
+            return gpu;
+        }
+
+        public int deleteGPU(GPU gpu) {
+            int rowsDeleted = database.delete(TABLE_GPU_NAME, COLUMN_GPU_ID + " = " + gpu.getId(), null);
+            // the above method returns the number of row that were deleted
+            return rowsDeleted;
+        }
+
+        //RAM DATA ACCESS METHODS
+        public ArrayList<RAM> getAllRAM() {
+
+            ArrayList<RAM> allRAM = new ArrayList<>();
+            String query = String.format("SELECT %s, %s, %s, %s, %s, %s, %s FROM %s", COLUMN_RAM_ID, COLUMN_RAM_MANUFACTURER, COLUMN_RAM_MODEL, COLUMN_RAM_TYPE, COLUMN_RAM_CAPACITY,
+                           COLUMN_RAM_SPEED, COLUMN_RAM_FORM_FACTOR, TABLE_RAM_NAME);
+
+            Cursor c = database.rawQuery(query, null); //cursor is query result
+
+            // make sure we got some results from the db before processing them
+            if ((c != null) && (c.getCount() > 0)) { //check if cursor is not null and has rows
+
+                c.moveToFirst(); //move cursor to first row
+
+                while (!c.isAfterLast()) { //while cursor is not after last row
+                    //Assign data to appropriate instance variables
+                    long ramId = c.getLong(0);
+                    String ramManufacturer = c.getString(1);
+                    String ramModel = c.getString(2);
+                    String ramType = c.getString(3);
+                    long ramCapacity = c.getLong(4);
+                    long ramSpeed = c.getLong(5);
+                    String ramFormFactor = c.getString(6);
+
+
+                    RAM ram = new RAM(ramId, ramManufacturer, ramModel, ramType, ramCapacity, ramSpeed, ramFormFactor); //assign variables to RAM object
+                    allRAM.add(ram);//add RAM to array list
+                    c.moveToNext(); //move to next row -- DON'T FORGET THIS LINE!!!!!!
+                }
+                c.close(); //close cursor object to save resources
+            }
+            Log.d(TAG, query);
+            return allRAM;
+        }
+
+        public RAM getRamById(long id){
+            String query = String.format("SELECT %s, %s, %s, %s, %s, %s, %s FROM %s WHERE %s = %d", COLUMN_RAM_ID, COLUMN_RAM_MANUFACTURER, COLUMN_RAM_MODEL, COLUMN_RAM_TYPE, COLUMN_RAM_CAPACITY,
+                           COLUMN_RAM_SPEED, COLUMN_RAM_FORM_FACTOR, TABLE_RAM_NAME, COLUMN_RAM_ID, id);
+
+            Cursor c = database.rawQuery(query, null);
+            c.moveToFirst();
+
+            long ramId = c.getLong(0);
+            String ramManufacturer = c.getString(1);
+            String ramModel = c.getString(2);
+            String ramType = c.getString(3);
+            long ramCapacity = c.getLong(4);
+            long ramSpeed = c.getLong(5);
+            String ramFormFactor = c.getString(6);
+
+
+
+            c.close();
+
+            RAM ram = new RAM(ramId, ramManufacturer, ramModel, ramType, ramCapacity, ramSpeed, ramFormFactor);
+            return ram;
+        }
+
+        public RAM insertRAM(RAM ram) {
+
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_RAM_MANUFACTURER, ram.getManufacturer());
+            values.put(COLUMN_RAM_MODEL, ram.getModel());
+            values.put(COLUMN_RAM_TYPE, ram.getType());
+            values.put(COLUMN_RAM_CAPACITY, ram.getCapacity());
+            values.put(COLUMN_RAM_SPEED, ram.getSpeed());
+            values.put(COLUMN_RAM_FORM_FACTOR, ram.getFormFactor());
+            long insertId = database.insert(TABLE_RAM_NAME, null, values);
+            // note: insertId will be -1 if the insert failed
+
+            ram.setId(insertId); //set task object ID with auto incremented ID
+            return ram;
+        }
+
+
+        public RAM updateRAM(RAM ram){
+
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_RAM_MANUFACTURER, ram.getManufacturer());
+            values.put(COLUMN_RAM_MODEL, ram.getModel());
+            values.put(COLUMN_RAM_TYPE, ram.getType());
+            values.put(COLUMN_RAM_CAPACITY, ram.getCapacity());
+            values.put(COLUMN_RAM_SPEED, ram.getSpeed());
+            values.put(COLUMN_RAM_FORM_FACTOR, ram.getFormFactor());
+            int rowsUpdated = database.update(TABLE_RAM_NAME, values, COLUMN_RAM_ID + " = " + ram.getId(), null);
+            // this method returns the number of rows that were updated in the db
+            // so that you could use it to confirm that your update worked
+            return ram;
+        }
+
+        public int deleteRAM(RAM ram){
+            int rowsDeleted = database.delete(TABLE_RAM_NAME, COLUMN_RAM_ID + " = " + ram.getId(), null);
+            // the above method returns the number of row that were deleted
+            return rowsDeleted;
+        }
+
 }
-
-

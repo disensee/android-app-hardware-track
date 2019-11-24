@@ -10,6 +10,18 @@ public class RAM {
     private long speed;
     private String formFactor;
 
+    public RAM(long id, String manufacturer, String model, String type, long capacity, long speed, String formFactor) {
+        this.id = id;
+        this.manufacturer = manufacturer;
+        this.model = model;
+        this.type = type;
+        this.capacity = capacity;
+        this.speed = speed;
+        this.formFactor = formFactor;
+    }
+
+    public RAM(){};
+
     public long getId() { return id; }
 
     public void setId(long id) {

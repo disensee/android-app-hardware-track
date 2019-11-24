@@ -10,6 +10,18 @@ public class GPU {
     private long boostClock;
     private String vRam;
 
+    public GPU(long id, String manufacturer, String model, long coreCount, long baseClock, long boostClock, String vRam) {
+        this.id = id;
+        this.manufacturer = manufacturer;
+        this.model = model;
+        this.coreCount = coreCount;
+        this.baseClock = baseClock;
+        this.boostClock = boostClock;
+        this.vRam = vRam;
+    }
+
+    public GPU(){};
+
     public long getId() {
         return id;
     }

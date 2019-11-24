@@ -1,6 +1,7 @@
 package com.example.hardwaretrack.models;
 
 public class Drive {
+
     private long id;
     private String manufacturer;
     private String model;
@@ -9,6 +10,19 @@ public class Drive {
     private String transferProtocol;
     private long capacity;
     private long maxTransferRate;
+
+    public Drive(long id, String manufacturer, String model, String type, String formFactor, String transferProtocol, long capacity, long maxTransferRate) {
+        this.id = id;
+        this.manufacturer = manufacturer;
+        this.model = model;
+        this.type = type;
+        this.formFactor = formFactor;
+        this.transferProtocol = transferProtocol;
+        this.capacity = capacity;
+        this.maxTransferRate = maxTransferRate;
+    }
+
+    public Drive(){};
 
     public String getManufacturer() {
         return manufacturer;
