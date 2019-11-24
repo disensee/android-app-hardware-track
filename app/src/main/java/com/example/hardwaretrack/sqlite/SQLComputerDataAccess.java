@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import com.example.hardwaretrack.models.CPU;
 import com.example.hardwaretrack.models.Computer;
 
 import java.text.ParseException;
@@ -35,15 +36,15 @@ public class SQLComputerDataAccess {
 
         // We should create static constants for the table name, and all column names
         public static final String TABLE_COMPUTER_NAME = "computer";
-        public static final String COLUMN_COMPUTER_ID = "_id";
-        public static final String COLUMN_COMPUTER_TYPE = "type";
-        public static final String COLUMN_COMPUTER_MANUFACTURER = "manufacturer";
-        public static final String COLUMN_COMPUTER_MODEL = "model";
+        public static final String COLUMN_COMPUTER_ID = "_idComputer";
+        public static final String COLUMN_COMPUTER_TYPE = "computerType";
+        public static final String COLUMN_COMPUTER_MANUFACTURER = "computerManufacturer";
+        public static final String COLUMN_COMPUTER_MODEL = "computerModel";
         public static final String COLUMN_COMPUTER_CUSTOM_BUILD = "customBuild";
-        public static final String COLUMN_COMPUTER_PROCESSOR = "processor";
-        public static final String COLUMN_COMPUTER_GRAPHICS_PROCESSOR = "graphicsProcessor";
-        public static final String COLUMN_COMPUTER_RAM = "ram";
-        public static final String COLUMN_COMPUTER_DRIVE = "drive";
+        public static final String COLUMN_COMPUTER_PROCESSOR = "_idCpu";
+        public static final String COLUMN_COMPUTER_GRAPHICS_PROCESSOR = "_idGpu";
+        public static final String COLUMN_COMPUTER_RAM = "_idRam";
+        public static final String COLUMN_COMPUTER_DRIVE = "_idDrive";
 
 
         public static final String TABLE_COMPUTER_CREATE = String.format("create table %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER," +
@@ -61,13 +62,13 @@ public class SQLComputerDataAccess {
         );
 
         public static final String TABLE_CPU_NAME = "cpu";
-        public static final String COLUMN_CPU_ID = "_id";
-        public static final String COLUMN_CPU_MANUFACTURER = "manufacturer";
-        public static final String COLUMN_CPU_MODEL = "model";
-        public static final String COLUMN_CPU_CORE_COUNT = "coreCount";
-        public static final String COLUMN_CPU_THREAD_COUNT = "threadCount";
-        public static final String COLUMN_CPU_BASE_CLOCK = "baseClock";
-        public static final String COLUMN_CPU_BOOST_CLOCK = "boostClock";
+        public static final String COLUMN_CPU_ID = "_idCpu";
+        public static final String COLUMN_CPU_MANUFACTURER = "cpuManufacturer";
+        public static final String COLUMN_CPU_MODEL = "cpuModel";
+        public static final String COLUMN_CPU_CORE_COUNT = "cpuCoreCount";
+        public static final String COLUMN_CPU_THREAD_COUNT = "cpuThreadCount";
+        public static final String COLUMN_CPU_BASE_CLOCK = "cpuBaseClock";
+        public static final String COLUMN_CPU_BOOST_CLOCK = "cpuBoostClock";
 
         public static final String TABLE_CPU_CREATE = String.format("create table %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER, %s REAL, %s REAL, FOREIGN KEY(%s) REFERENCES %s(%s))",
 
@@ -85,14 +86,14 @@ public class SQLComputerDataAccess {
                 );
 
         public static final String TABLE_DRIVE_NAME = "drive";
-        public static final String COLUMN_DRIVE_ID = "_id";
-        public static final String COLUMN_DRIVE_MANUFACTURER = "manufacturer";
-        public static final String COLUMN_DRIVE_MODEL = "model";
-        public static final String COLUMN_DRIVE_TYPE = "type";
-        public static final String COLUMN_DRIVE_FORM_FACTOR = "formFactor";
+        public static final String COLUMN_DRIVE_ID = "_idDrive";
+        public static final String COLUMN_DRIVE_MANUFACTURER = "driveManufacturer";
+        public static final String COLUMN_DRIVE_MODEL = "driveModel";
+        public static final String COLUMN_DRIVE_TYPE = "driveType";
+        public static final String COLUMN_DRIVE_FORM_FACTOR = "driveFormFactor";
         public static final String COLUMN_DRIVE_TRANSFER_PROTOCOL = "transferProtocol";
-        public static final String COLUMN_DRIVE_CAPACITY = "capacity";
-        public static final String COLUMN_DRIVE_MAX_TRANSFER_RATE = "maxTransferRate";
+        public static final String COLUMN_DRIVE_CAPACITY = "driveCapacity";
+        public static final String COLUMN_DRIVE_MAX_TRANSFER_RATE = "driveMaxTransferRate";
 
         public static final String TABLE_DRIVE_CREATE = String.format("create table %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER, FOREIGN KEY(%s) REFERENCES %s(%s))",
 
@@ -111,13 +112,13 @@ public class SQLComputerDataAccess {
                 );
 
         public static final String TABLE_GPU_NAME = "gpu";
-        public static final String COLUMN_GPU_ID = "_id";
-        public static final String COLUMN_GPU_MANUFACTURER = "manufacturer";
-        public static final String COLUMN_GPU_MODEL = "model";
-        public static final String COLUMN_GPU_CORE_COUNT = "coreCount";
-        public static final String COLUMN_GPU_BASE_CLOCK = "baseClock";
-        public static final String COLUMN_GPU_BOOST_CLOCK = "boostClock";
-        public static final String COLUMN_GPU_VRAM = "vRam";
+        public static final String COLUMN_GPU_ID = "_idGpu";
+        public static final String COLUMN_GPU_MANUFACTURER = "gpuManufacturer";
+        public static final String COLUMN_GPU_MODEL = "gpuModel";
+        public static final String COLUMN_GPU_CORE_COUNT = "gpuCoreCount";
+        public static final String COLUMN_GPU_BASE_CLOCK = "gpuBaseClock";
+        public static final String COLUMN_GPU_BOOST_CLOCK = "gpuBoostClock";
+        public static final String COLUMN_GPU_VRAM = "gpuVRam";
 
         public static final String TABLE_GPU_CREATE = String.format("create table %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER, %s INTEGER, %s TEXT, FOREIGN KEY(%s) REFERENCES %s(%s))",
 
@@ -135,13 +136,13 @@ public class SQLComputerDataAccess {
                 );
 
         public static final String TABLE_RAM_NAME = "ram";
-        public static final String COLUMN_RAM_ID = "_id";
-        public static final String COLUMN_RAM_MANUFACTURER = "manufacturer";
-        public static final String COLUMN_RAM_MODEL = "model";
-        public static final String COLUMN_RAM_TYPE = "type";
-        public static final String COLUMN_RAM_CAPACITY = "capacity";
-        public static final String COLUMN_RAM_SPEED = "speed";
-        public static final String COLUMN_RAM_FORM_FACTOR = "formFactor";
+        public static final String COLUMN_RAM_ID = "_idRam";
+        public static final String COLUMN_RAM_MANUFACTURER = "ramManufacturer";
+        public static final String COLUMN_RAM_MODEL = "ramModel";
+        public static final String COLUMN_RAM_TYPE = "ramType";
+        public static final String COLUMN_RAM_CAPACITY = "ramCapacity";
+        public static final String COLUMN_RAM_SPEED = "ramSpeed";
+        public static final String COLUMN_RAM_FORM_FACTOR = "ramFormFactor";
 
         public static final String TABLE_RAM_CREATE = String.format("create table %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER, %s TEXT, FOREIGN KEY(%s) REFERENCES %s(%s))",
 
@@ -160,11 +161,23 @@ public class SQLComputerDataAccess {
 
 
         //@Override TODO - IMPLEMENT INTERFACE?
+        //COMPUTER DATA ACCESS METHODS
         public ArrayList<Computer> getAllComputers() {
 
-            ArrayList<Computer> computer = new ArrayList<>();
-            String query = String.format("SELECT %s, %s, %s, %s, %s, %s, %s, %s, %s FROM %s", COLUMN_COMPUTER_ID, COLUMN_COMPUTER_TYPE, COLUMN_COMPUTER_MANUFACTURER, COLUMN_COMPUTER_MODEL, COLUMN_COMPUTER_CUSTOM_BUILD, COLUMN_COMPUTER_PROCESSOR,
-                                        COLUMN_COMPUTER_GRAPHICS_PROCESSOR, COLUMN_COMPUTER_DRIVE, COLUMN_COMPUTER_RAM, TABLE_COMPUTER_NAME);
+            ArrayList<Computer> allComputers = new ArrayList<>();
+            String query = String.format("SELECT %s, %s, %s, %s, %s, %s || ' ' || %s, %s || ' '  %s, %s || ' ' || %s, %s || ' ' || %s " +
+                                        "FROM %s " +
+                                        "INNER JOIN %s " +
+                                            "on %s.%s = %s.%s " +
+                                        "INNER JOIN %s " +
+                                            "on %s.%s = %s.%s " +
+                                        "INNER JOIN %s " +
+                                            "on %s.%s = %s.%s " +
+                                        "INNER JOIN %s " +
+                                            "on %s.%s = %s.%s", COLUMN_COMPUTER_ID, COLUMN_COMPUTER_TYPE, COLUMN_COMPUTER_MANUFACTURER, COLUMN_COMPUTER_MODEL, COLUMN_COMPUTER_CUSTOM_BUILD, COLUMN_CPU_MANUFACTURER,
+                                        COLUMN_CPU_MODEL, COLUMN_GPU_MANUFACTURER, COLUMN_GPU_MODEL, COLUMN_DRIVE_MANUFACTURER, COLUMN_DRIVE_MODEL, COLUMN_RAM_MANUFACTURER, COLUMN_RAM_MODEL, TABLE_COMPUTER_NAME,
+                                        TABLE_CPU_NAME, TABLE_COMPUTER_NAME, COLUMN_COMPUTER_PROCESSOR, TABLE_CPU_NAME, COLUMN_CPU_ID, TABLE_GPU_NAME, TABLE_COMPUTER_NAME, COLUMN_COMPUTER_GRAPHICS_PROCESSOR, TABLE_GPU_NAME,
+                                        COLUMN_GPU_ID, TABLE_DRIVE_NAME, TABLE_COMPUTER_NAME, COLUMN_DRIVE_ID, TABLE_DRIVE_NAME, COLUMN_DRIVE_ID, TABLE_RAM_NAME, TABLE_COMPUTER_NAME, COLUMN_COMPUTER_RAM, TABLE_RAM_NAME, COLUMN_RAM_ID);
 
             Cursor c = database.rawQuery(query, null); //cursor is query result
 
@@ -185,18 +198,21 @@ public class SQLComputerDataAccess {
                     String computer_drive = c.getString(7);
                     String computer_ram = c.getString(8);
 
-                    /* -- TODO - INCLUDE JOINS FOR SQL QUERY - CREATE NEW CONSTRUCTOR FOR COMPUTER AND FINISH THIS METHOD!!
-                    Task t = new Task(id, desc, dueDate, done); //assign variables to Task object
-                    tasks.add(t);//add task object to array list
+                    //TODO - Change this query to properly assign components to computer object
+                    Computer pc = new Computer(); //assign variables to computer object
+                    allComputers.add(pc);//add computer to array list
                     c.moveToNext(); //move to next row -- DON'T FORGET THIS LINE!!!!!!
                 }
                 c.close(); //close cursor object to save resources
             }
-            return tasks;
+            Log.d(TAG, query);
+            return allComputers;
+
         }
 
-        @Override
-        public Task getTaskById(long id) {
+
+        /*
+        public Computer getComputerById(long id) {
 
             String query = String.format("SELECT %s, %s, %s, %s FROM %s WHERE %s = %d", COLUMN_TASK_ID, COLUMN_DESCRIPTION, COLUMN_DUE, COLUMN_DONE, TABLE_NAME, COLUMN_TASK_ID, id);
 
@@ -256,5 +272,102 @@ public class SQLComputerDataAccess {
         }
 
      */
+        //CPU DATA ACCESS METHODS
+        public ArrayList<CPU> getAllCPUs(){
+
+            ArrayList<CPU> allCPUs = new ArrayList<>();
+            String query = String.format("SELECT %s, %s, %s, %s, %s, %s, %s FROM %s", COLUMN_CPU_ID, COLUMN_CPU_MANUFACTURER, COLUMN_CPU_MODEL, COLUMN_CPU_CORE_COUNT, COLUMN_CPU_THREAD_COUNT, COLUMN_CPU_BASE_CLOCK,
+                           COLUMN_CPU_BOOST_CLOCK, TABLE_CPU_NAME);
+
+            Cursor c = database.rawQuery(query, null); //cursor is query result
+
+            // make sure we got some results from the db before processing them
+            if((c != null) && (c.getCount() > 0)) { //check if cursor is not null and has rows
+
+                c.moveToFirst(); //move cursor to first row
+
+                while (!c.isAfterLast()) { //while cursor is not after last row
+                    //Assign data to appropriate instance variables
+                    long cpuId = c.getLong(0);
+                    String cpuManufacturer = c.getString(1);
+                    String cpuModel = c.getString(2);
+                    int cpuCoreCount = c.getInt(3);
+                    int cpuThreadCount = c.getInt(4);
+                    float cpuBaseClock = c.getFloat(5);
+                    float cpuBoostClock = c.getFloat(6);
+
+
+                    CPU cpu = new CPU(cpuId, cpuManufacturer, cpuModel, cpuCoreCount, cpuThreadCount, cpuBaseClock, cpuBoostClock); //assign variables to cpu object
+                    allCPUs.add(cpu);//add cpu to array list
+                    c.moveToNext(); //move to next row -- DON'T FORGET THIS LINE!!!!!!
+                }
+                c.close(); //close cursor object to save resources
+            }
+            Log.d(TAG, query);
+            return allCPUs;
+
+        }
+
+        public CPU getCPUById(long id) {
+
+            String query = String.format("SELECT %s, %s, %s, %s, %s, %s, %s FROM %s WHERE %s = %d", COLUMN_CPU_ID, COLUMN_CPU_MANUFACTURER, COLUMN_CPU_MODEL, COLUMN_CPU_CORE_COUNT, COLUMN_CPU_THREAD_COUNT,
+                           COLUMN_CPU_BASE_CLOCK, COLUMN_CPU_BOOST_CLOCK, TABLE_CPU_NAME, COLUMN_CPU_ID, id);
+
+            Cursor c = database.rawQuery(query, null);
+            c.moveToFirst();
+
+            long cpuId = c.getLong(0);
+            String cpuManufacturer = c.getString(1);
+            String cpuModel = c.getString(2);
+            int cpuCoreCount = c.getInt(3);
+            int cpuThreadCount = c.getInt(4);
+            float cpuBaseClock = c.getFloat(5);
+            float cpuBoostClock = c.getFloat(6);
+
+
+            c.close();
+
+            CPU cpu = new CPU(cpuId, cpuManufacturer, cpuModel, cpuCoreCount, cpuThreadCount, cpuBaseClock, cpuBoostClock);
+            return  cpu;
+
+    }
+
+        public CPU insertTask(CPU cpu) {
+
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_CPU_MANUFACTURER, cpu.getManufacturer());
+            values.put(COLUMN_CPU_MODEL, cpu.getModel());
+            values.put(COLUMN_CPU_CORE_COUNT, cpu.getCoreCount());
+            values.put(COLUMN_CPU_THREAD_COUNT, cpu.getThreadCount());
+            values.put(COLUMN_CPU_BASE_CLOCK, cpu.getBaseClock());
+            values.put(COLUMN_CPU_BOOST_CLOCK, cpu.getBoostClock());
+            long insertId = database.insert(TABLE_CPU_NAME, null, values);
+            // note: insertId will be -1 if the insert failed
+
+            cpu.setId(insertId); //set task object ID with auto incremented ID
+            return cpu;
+        }
+
+        public CPU updateCPU(CPU cpu) {
+            ContentValues values = new ContentValues();
+            values.put(COLUMN_CPU_MANUFACTURER, cpu.getManufacturer());
+            values.put(COLUMN_CPU_MODEL, cpu.getModel());
+            values.put(COLUMN_CPU_CORE_COUNT, cpu.getCoreCount());
+            values.put(COLUMN_CPU_THREAD_COUNT, cpu.getThreadCount());
+            values.put(COLUMN_CPU_BASE_CLOCK, cpu.getBaseClock());
+            values.put(COLUMN_CPU_BOOST_CLOCK, cpu.getBoostClock());
+            int rowsUpdated = database.update(TABLE_CPU_NAME, values, COLUMN_CPU_ID + " = " + cpu.getId(), null);
+            // this method returns the number of rows that were updated in the db
+            // so that you could use it to confirm that your update worked
+            return cpu;
+        }
+
+        public int deleteCPU(CPU cpu) {
+            int rowsDeleted = database.delete(TABLE_CPU_NAME, COLUMN_CPU_ID + " = " + cpu.getId(), null);
+            // the above method returns the number of row that were deleted
+            return rowsDeleted;
+        }
+
 }
+
 

@@ -1,6 +1,7 @@
 package com.example.hardwaretrack.models;
 
 public class CPU {
+
     private long id;
     private String manufacturer;
     private String model;
@@ -11,6 +12,26 @@ public class CPU {
 
     public String getManufacturer() {
         return manufacturer;
+    }
+
+    public CPU(long id, String manufacturer, String model, int coreCount, int threadCount, float baseClock, float boostClock) {
+        this.id = id;
+        this.manufacturer = manufacturer;
+        this.model = model;
+        this.coreCount = coreCount;
+        this.threadCount = threadCount;
+        this.baseClock = baseClock;
+        this.boostClock = boostClock;
+    }
+
+    public CPU(){};
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setManufacturer(String manufacturer) {

@@ -11,6 +11,19 @@ public class Computer {
     private Drive drive;
     private RAM ram;
 
+    public Computer(String type, String manufacturer, String model, boolean customBuild, CPU processor, GPU graphicsProcessor, Drive drive, RAM ram) {
+        this.type = type;
+        this.manufacturer = manufacturer;
+        this.model = model;
+        this.customBuild = customBuild;
+        this.processor = processor;
+        this.graphicsProcessor = graphicsProcessor;
+        this.drive = drive;
+        this.ram = ram;
+    }
+
+    public Computer(){}
+
     public long getId() {
         return id;
     }
