@@ -38,6 +38,8 @@ public class SQLComputerDataAccess {
 
 
         // We should create static constants for the table name, and all column names
+
+        //COMPUTER TABLE CONSTANTS
         public static final String TABLE_COMPUTER_NAME = "computer";
         public static final String COLUMN_COMPUTER_ID = "_idComputer";
         public static final String COLUMN_COMPUTER_TYPE = "computerType";
@@ -49,21 +51,7 @@ public class SQLComputerDataAccess {
         public static final String COLUMN_COMPUTER_RAM = "_idRam";
         public static final String COLUMN_COMPUTER_DRIVE = "_idDrive";
 
-
-        public static final String TABLE_COMPUTER_CREATE = String.format("create table %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER," +
-                                                    "%s INTEGER, %s INTEGER, %s INTEGER)",
-                TABLE_COMPUTER_NAME,
-                COLUMN_COMPUTER_ID,
-                COLUMN_COMPUTER_TYPE,
-                COLUMN_COMPUTER_MANUFACTURER,
-                COLUMN_COMPUTER_MODEL,
-                COLUMN_COMPUTER_CUSTOM_BUILD,
-                COLUMN_COMPUTER_PROCESSOR,
-                COLUMN_COMPUTER_GRAPHICS_PROCESSOR,
-                COLUMN_COMPUTER_RAM,
-                COLUMN_COMPUTER_DRIVE
-        );
-
+        //CPU TABLE CONSTANTS
         public static final String TABLE_CPU_NAME = "cpu";
         public static final String COLUMN_CPU_ID = "_idCpu";
         public static final String COLUMN_CPU_MANUFACTURER = "cpuManufacturer";
@@ -73,7 +61,71 @@ public class SQLComputerDataAccess {
         public static final String COLUMN_CPU_BASE_CLOCK = "cpuBaseClock";
         public static final String COLUMN_CPU_BOOST_CLOCK = "cpuBoostClock";
 
-        public static final String TABLE_CPU_CREATE = String.format("create table %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER, %s REAL, %s REAL, FOREIGN KEY(%s) REFERENCES %s(%s))",
+        //DRIVE TABLE CONSTANTS
+        public static final String TABLE_DRIVE_NAME = "drive";
+        public static final String COLUMN_DRIVE_ID = "_idDrive";
+        public static final String COLUMN_DRIVE_MANUFACTURER = "driveManufacturer";
+        public static final String COLUMN_DRIVE_MODEL = "driveModel";
+        public static final String COLUMN_DRIVE_TYPE = "driveType";
+        public static final String COLUMN_DRIVE_FORM_FACTOR = "driveFormFactor";
+        public static final String COLUMN_DRIVE_TRANSFER_PROTOCOL = "transferProtocol";
+        public static final String COLUMN_DRIVE_CAPACITY = "driveCapacity";
+        public static final String COLUMN_DRIVE_MAX_TRANSFER_RATE = "driveMaxTransferRate";
+
+        //GPU TABLE CONSTANTS
+        public static final String TABLE_GPU_NAME = "gpu";
+        public static final String COLUMN_GPU_ID = "_idGpu";
+        public static final String COLUMN_GPU_MANUFACTURER = "gpuManufacturer";
+        public static final String COLUMN_GPU_MODEL = "gpuModel";
+        public static final String COLUMN_GPU_CORE_COUNT = "gpuCoreCount";
+        public static final String COLUMN_GPU_BASE_CLOCK = "gpuBaseClock";
+        public static final String COLUMN_GPU_BOOST_CLOCK = "gpuBoostClock";
+        public static final String COLUMN_GPU_VRAM = "gpuVRam";
+
+        //RAM TABLE CONSTANTS
+        public static final String TABLE_RAM_NAME = "ram";
+        public static final String COLUMN_RAM_ID = "_idRam";
+        public static final String COLUMN_RAM_MANUFACTURER = "ramManufacturer";
+        public static final String COLUMN_RAM_MODEL = "ramModel";
+        public static final String COLUMN_RAM_TYPE = "ramType";
+        public static final String COLUMN_RAM_CAPACITY = "ramCapacity";
+        public static final String COLUMN_RAM_SPEED = "ramSpeed";
+        public static final String COLUMN_RAM_FORM_FACTOR = "ramFormFactor";
+
+
+        //CREATE STATEMENTS
+        public static final String TABLE_COMPUTER_CREATE = String.format("create table %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER," +
+                                                    "%s INTEGER, %s INTEGER, %s INTEGER, " +
+                                                    "FOREIGN KEY(%s) REFERENCES %s(%s)," +
+                                                    "FOREIGN KEY(%s) REFERENCES %s(%s)," +
+                                                    "FOREIGN KEY(%s) REFERENCES %s(%s)," +
+                                                    "FOREIGN KEY(%s) REFERENCES %s(%s))",
+                TABLE_COMPUTER_NAME,
+                COLUMN_COMPUTER_ID,
+                COLUMN_COMPUTER_TYPE,
+                COLUMN_COMPUTER_MANUFACTURER,
+                COLUMN_COMPUTER_MODEL,
+                COLUMN_COMPUTER_CUSTOM_BUILD,
+                COLUMN_COMPUTER_PROCESSOR,
+                COLUMN_COMPUTER_GRAPHICS_PROCESSOR,
+                COLUMN_COMPUTER_RAM,
+                COLUMN_COMPUTER_DRIVE,
+                COLUMN_COMPUTER_RAM,
+                TABLE_RAM_NAME,
+                COLUMN_RAM_ID,
+                COLUMN_COMPUTER_GRAPHICS_PROCESSOR,
+                TABLE_GPU_NAME,
+                COLUMN_GPU_ID,
+                COLUMN_COMPUTER_PROCESSOR,
+                TABLE_CPU_NAME,
+                COLUMN_CPU_ID,
+                COLUMN_COMPUTER_DRIVE,
+                TABLE_DRIVE_NAME,
+                COLUMN_DRIVE_ID
+        );
+
+
+        public static final String TABLE_CPU_CREATE = String.format("create table %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER, %s REAL, %s REAL)",
 
                 TABLE_CPU_NAME,
                 COLUMN_CPU_ID,
@@ -88,17 +140,8 @@ public class SQLComputerDataAccess {
                 COLUMN_COMPUTER_PROCESSOR
                 );
 
-        public static final String TABLE_DRIVE_NAME = "drive";
-        public static final String COLUMN_DRIVE_ID = "_idDrive";
-        public static final String COLUMN_DRIVE_MANUFACTURER = "driveManufacturer";
-        public static final String COLUMN_DRIVE_MODEL = "driveModel";
-        public static final String COLUMN_DRIVE_TYPE = "driveType";
-        public static final String COLUMN_DRIVE_FORM_FACTOR = "driveFormFactor";
-        public static final String COLUMN_DRIVE_TRANSFER_PROTOCOL = "transferProtocol";
-        public static final String COLUMN_DRIVE_CAPACITY = "driveCapacity";
-        public static final String COLUMN_DRIVE_MAX_TRANSFER_RATE = "driveMaxTransferRate";
 
-        public static final String TABLE_DRIVE_CREATE = String.format("create table %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER, FOREIGN KEY(%s) REFERENCES %s(%s))",
+        public static final String TABLE_DRIVE_CREATE = String.format("create table %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER)",
 
                 TABLE_DRIVE_NAME,
                 COLUMN_DRIVE_ID,
@@ -114,16 +157,8 @@ public class SQLComputerDataAccess {
                 COLUMN_COMPUTER_DRIVE
                 );
 
-        public static final String TABLE_GPU_NAME = "gpu";
-        public static final String COLUMN_GPU_ID = "_idGpu";
-        public static final String COLUMN_GPU_MANUFACTURER = "gpuManufacturer";
-        public static final String COLUMN_GPU_MODEL = "gpuModel";
-        public static final String COLUMN_GPU_CORE_COUNT = "gpuCoreCount";
-        public static final String COLUMN_GPU_BASE_CLOCK = "gpuBaseClock";
-        public static final String COLUMN_GPU_BOOST_CLOCK = "gpuBoostClock";
-        public static final String COLUMN_GPU_VRAM = "gpuVRam";
 
-        public static final String TABLE_GPU_CREATE = String.format("create table %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER, %s INTEGER, %s TEXT, FOREIGN KEY(%s) REFERENCES %s(%s))",
+        public static final String TABLE_GPU_CREATE = String.format("create table %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER, %s INTEGER, %s TEXT)",
 
                 TABLE_GPU_NAME,
                 COLUMN_GPU_ID,
@@ -138,16 +173,7 @@ public class SQLComputerDataAccess {
                 COLUMN_COMPUTER_GRAPHICS_PROCESSOR
                 );
 
-        public static final String TABLE_RAM_NAME = "ram";
-        public static final String COLUMN_RAM_ID = "_idRam";
-        public static final String COLUMN_RAM_MANUFACTURER = "ramManufacturer";
-        public static final String COLUMN_RAM_MODEL = "ramModel";
-        public static final String COLUMN_RAM_TYPE = "ramType";
-        public static final String COLUMN_RAM_CAPACITY = "ramCapacity";
-        public static final String COLUMN_RAM_SPEED = "ramSpeed";
-        public static final String COLUMN_RAM_FORM_FACTOR = "ramFormFactor";
-
-        public static final String TABLE_RAM_CREATE = String.format("create table %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER, %s TEXT, FOREIGN KEY(%s) REFERENCES %s(%s))",
+        public static final String TABLE_RAM_CREATE = String.format("create table %s (%s INTEGER PRIMARY KEY AUTOINCREMENT, %s TEXT, %s TEXT, %s TEXT, %s INTEGER, %s INTEGER, %s TEXT)",
 
                 TABLE_RAM_NAME,
                 COLUMN_RAM_ID,
