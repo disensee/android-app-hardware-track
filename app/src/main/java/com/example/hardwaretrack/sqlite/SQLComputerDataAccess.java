@@ -168,19 +168,8 @@ public class SQLComputerDataAccess {
         public ArrayList<Computer> getAllComputers() {
 
             ArrayList<Computer> allComputers = new ArrayList<>();
-            String query = String.format("SELECT %s, %s, %s, %s, %s, %s || ' ' || %s, %s || ' '  %s, %s || ' ' || %s, %s || ' ' || %s " +
-                                        "FROM %s " +
-                                        "INNER JOIN %s " +
-                                            "on %s.%s = %s.%s " +
-                                        "INNER JOIN %s " +
-                                            "on %s.%s = %s.%s " +
-                                        "INNER JOIN %s " +
-                                            "on %s.%s = %s.%s " +
-                                        "INNER JOIN %s " +
-                                            "on %s.%s = %s.%s", COLUMN_COMPUTER_ID, COLUMN_COMPUTER_TYPE, COLUMN_COMPUTER_MANUFACTURER, COLUMN_COMPUTER_MODEL, COLUMN_COMPUTER_CUSTOM_BUILD, COLUMN_CPU_MANUFACTURER,
-                                        COLUMN_CPU_MODEL, COLUMN_GPU_MANUFACTURER, COLUMN_GPU_MODEL, COLUMN_DRIVE_MANUFACTURER, COLUMN_DRIVE_MODEL, COLUMN_RAM_MANUFACTURER, COLUMN_RAM_MODEL, TABLE_COMPUTER_NAME,
-                                        TABLE_CPU_NAME, TABLE_COMPUTER_NAME, COLUMN_COMPUTER_PROCESSOR, TABLE_CPU_NAME, COLUMN_CPU_ID, TABLE_GPU_NAME, TABLE_COMPUTER_NAME, COLUMN_COMPUTER_GRAPHICS_PROCESSOR, TABLE_GPU_NAME,
-                                        COLUMN_GPU_ID, TABLE_DRIVE_NAME, TABLE_COMPUTER_NAME, COLUMN_DRIVE_ID, TABLE_DRIVE_NAME, COLUMN_DRIVE_ID, TABLE_RAM_NAME, TABLE_COMPUTER_NAME, COLUMN_COMPUTER_RAM, TABLE_RAM_NAME, COLUMN_RAM_ID);
+            String query = String.format("SELECT %s, %s, %s, %s, %s, %s, %s, %s, %s FROM %s", COLUMN_COMPUTER_ID, COLUMN_COMPUTER_TYPE, COLUMN_COMPUTER_MANUFACTURER, COLUMN_COMPUTER_MODEL, COLUMN_COMPUTER_CUSTOM_BUILD,
+                           COLUMN_COMPUTER_PROCESSOR, COLUMN_COMPUTER_GRAPHICS_PROCESSOR, COLUMN_COMPUTER_DRIVE, COLUMN_COMPUTER_RAM, TABLE_COMPUTER_NAME);
 
             Cursor c = database.rawQuery(query, null); //cursor is query result
 
@@ -191,18 +180,18 @@ public class SQLComputerDataAccess {
 
                 while (!c.isAfterLast()) { //while cursor is not after last row
                     //Assign data to appropriate instance variables
-                    long computer_id = c.getLong(0);
-                    String computer_type  = c.getString(1);
-                    String computer_manufacturer = c.getString(2);
-                    String computer_model = c.getString(3);
-                    boolean comuter_custom_build = (c.getLong(4) == 1 ? true : false);//conditional operator -- if c.getlong is equal to 1 return true, else return false
-                    String computer_processor = c.getString(5);
-                    String computer_gpu = c.getString(6);
-                    String computer_drive = c.getString(7);
-                    String computer_ram = c.getString(8);
+                    long computerId = c.getLong(0);
+                    String computerType  = c.getString(1);
+                    String computerManufacturer = c.getString(2);
+                    String computerModel = c.getString(3);
+                    boolean computerCustomBuild = (c.getLong(4) == 1 ? true : false);//conditional operator -- if c.getlong is equal to 1 return true, else return false
+                    long computerProcessorId = c.getLong(5);
+                    long computerGpuId = c.getLong(6);
+                    long computerDriveId = c.getLong(7);
+                    long computerRamId = c.getLong(8);
 
                     //TODO - Change this query to properly assign components to computer object
-                    Computer pc = new Computer(); //assign variables to computer object
+                    Computer pc = new Computer(computerId, computerType, computerManufacturer, computerModel, computerCustomBuild, getCPUById(computerProcessorId), getGPUById(computerGpuId), getDriveById(computerDriveId), getRamById(computerRamId)); //assign variables to computer object
                     allComputers.add(pc);//add computer to array list
                     c.moveToNext(); //move to next row -- DON'T FORGET THIS LINE!!!!!!
                 }
@@ -214,67 +203,79 @@ public class SQLComputerDataAccess {
         }
 
 
-        /*
         public Computer getComputerById(long id) {
 
-            String query = String.format("SELECT %s, %s, %s, %s FROM %s WHERE %s = %d", COLUMN_TASK_ID, COLUMN_DESCRIPTION, COLUMN_DUE, COLUMN_DONE, TABLE_NAME, COLUMN_TASK_ID, id);
+            String query = String.format("SELECT %s, %s, %s, %s, %s, %s, %s, %s, %s FROM %s WHERE %s = %d", COLUMN_COMPUTER_ID, COLUMN_COMPUTER_TYPE, COLUMN_COMPUTER_MANUFACTURER, COLUMN_COMPUTER_MODEL, COLUMN_COMPUTER_CUSTOM_BUILD,
+            COLUMN_COMPUTER_PROCESSOR, COLUMN_COMPUTER_GRAPHICS_PROCESSOR, COLUMN_COMPUTER_DRIVE, COLUMN_COMPUTER_RAM, TABLE_COMPUTER_NAME, COLUMN_COMPUTER_ID, id);
 
             Cursor c = database.rawQuery(query, null);
             c.moveToFirst();
 
-            //id = c.getLong(0);
-            String desc = c.getString(1);
-            String due = c.getString(2);
-            boolean done = (c.getLong(3) == 1 ? true : false);
-
+            long computerId = c.getLong(0);
+            String computerType  = c.getString(1);
+            String computerManufacturer = c.getString(2);
+            String computerModel = c.getString(3);
+            boolean computerCustomBuild = (c.getLong(4) == 1 ? true : false);//conditional operator -- if c.getlong is equal to 1 return true, else return false
+            long computerProcessorId = c.getLong(5);
+            long computerGpuId = c.getLong(6);
+            long computerDriveId = c.getLong(7);
+            long computerRamId = c.getLong(8);
             Date dueDate = null;
 
-            try {
-                dueDate = dateFormat.parse(due);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
 
             c.close();
 
-            Task t = new Task(id,desc,dueDate,done);
-            return  t;
+            Computer pc = new Computer(computerId, computerType, computerManufacturer, computerModel, computerCustomBuild, getCPUById(computerProcessorId), getGPUById(computerGpuId), getDriveById(computerDriveId), getRamById(computerRamId));
+            return pc;
         }
 
-        @Override
-        public Task insertTask(Task t) {
+        //@Override
+        public Computer insertComputer(Computer pc) {
 
             ContentValues values = new ContentValues();
-            values.put(COLUMN_DESCRIPTION, t.getDescription());
-            values.put(COLUMN_DUE, dateFormat.format(t.getDue())); //date format to convert to Date object to string to store in DB
-            values.put(COLUMN_DONE, (t.isDone() ? 1 : 0)); //convert boolean to 1 or 0 to store in DB
-            long insertId = database.insert(TABLE_NAME, null, values);
+            values.put(COLUMN_COMPUTER_TYPE, pc.getType());
+            values.put(COLUMN_COMPUTER_MANUFACTURER, pc.getManufacturer());
+            values.put(COLUMN_COMPUTER_MODEL, pc.getModel());
+            values.put(COLUMN_COMPUTER_CUSTOM_BUILD, (pc.isCustomBuild() ? 1 : 0));
+            values.put(COLUMN_COMPUTER_PROCESSOR, pc.getProcessor().getId());
+            values.put(COLUMN_COMPUTER_GRAPHICS_PROCESSOR, pc.getGraphicsProcessor().getId());
+            values.put(COLUMN_COMPUTER_DRIVE, pc.getDrive().getId());
+            values.put(COLUMN_COMPUTER_RAM, pc.getRam().getId());
+            long insertId = database.insert(TABLE_COMPUTER_NAME, null, values);
             // note: insertId will be -1 if the insert failed
 
-            t.setId(insertId); //set task object ID with auto incremented ID
-            return t;
+            pc.setId(insertId); //set object ID with auto incremented ID
+            return pc;
         }
 
-        @Override
-        public Task updateTask(Task t) {
+
+
+        //@Override
+        public Computer updateComputer(Computer pc) {
             ContentValues values = new ContentValues();
-            values.put(COLUMN_DESCRIPTION, t.getDescription());
-            values.put(COLUMN_DUE, dateFormat.format(t.getDue()));
-            values.put(COLUMN_DONE, (t.isDone() ? 1 : 0));
-            int rowsUpdated = database.update(TABLE_NAME, values, COLUMN_TASK_ID + " = " + t.getId(), null);
+            values.put(COLUMN_COMPUTER_TYPE, pc.getType());
+            values.put(COLUMN_COMPUTER_MANUFACTURER, pc.getManufacturer());
+            values.put(COLUMN_COMPUTER_MODEL, pc.getModel());
+            values.put(COLUMN_COMPUTER_CUSTOM_BUILD, (pc.isCustomBuild() ? 1 : 0));
+            values.put(COLUMN_COMPUTER_PROCESSOR, pc.getProcessor().getId());
+            values.put(COLUMN_COMPUTER_GRAPHICS_PROCESSOR, pc.getGraphicsProcessor().getId());
+            values.put(COLUMN_COMPUTER_DRIVE, pc.getDrive().getId());
+            values.put(COLUMN_COMPUTER_RAM, pc.getRam().getId());
+            int rowsUpdated = database.update(TABLE_COMPUTER_NAME, values, COLUMN_COMPUTER_ID + " = " + pc.getId(), null);
             // this method returns the number of rows that were updated in the db
             // so that you could use it to confirm that your update worked
-            return t;
+            return pc;
         }
 
-        @Override
-        public int deleteTask(Task t) {
-            int rowsDeleted = database.delete(TABLE_NAME, COLUMN_TASK_ID + " = " + t.getId(), null);
+
+        //@Override
+        public int deleteComputer(Computer pc) {
+            int rowsDeleted = database.delete(TABLE_COMPUTER_NAME, COLUMN_COMPUTER_ID + " = " + pc.getId(), null);
             // the above method returns the number of row that were deleted
             return rowsDeleted;
         }
 
-     */
+
         //CPU DATA ACCESS METHODS
         public ArrayList<CPU> getAllCPUs(){
 

@@ -11,7 +11,8 @@ public class Computer {
     private Drive drive;
     private RAM ram;
 
-    public Computer(String type, String manufacturer, String model, boolean customBuild, CPU processor, GPU graphicsProcessor, Drive drive, RAM ram) {
+    public Computer(long id, String type, String manufacturer, String model, boolean customBuild, CPU processor, GPU graphicsProcessor, Drive drive, RAM ram) {
+        this.id = id;
         this.type = type;
         this.manufacturer = manufacturer;
         this.model = model;
