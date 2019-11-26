@@ -77,4 +77,17 @@ public class CPU {
     public void setBoostClock(float boostClock) {
         this.boostClock = boostClock;
     }
+
+    @Override
+    public String toString() {
+        return "CPU{" +
+                "id=" + id +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
+                ", coreCount=" + coreCount +
+                ", threadCount=" + threadCount +
+                ", baseClock=" + baseClock +
+                ", boostClock=" + boostClock +
+                '}';
+    }
 }

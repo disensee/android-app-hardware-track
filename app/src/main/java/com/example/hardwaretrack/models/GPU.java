@@ -77,4 +77,17 @@ public class GPU {
     public void setvRam(String vRam) {
         this.vRam = vRam;
     }
+
+    @Override
+    public String toString() {
+        return "GPU{" +
+                "id=" + id +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
+                ", coreCount=" + coreCount +
+                ", baseClock=" + baseClock +
+                ", boostClock=" + boostClock +
+                ", vRam='" + vRam + '\'' +
+                '}';
+    }
 }

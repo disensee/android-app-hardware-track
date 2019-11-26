@@ -83,4 +83,18 @@ public class Drive {
     public void setMaxTransferRate(long maxTransferRate) {
         this.maxTransferRate = maxTransferRate;
     }
+
+    @Override
+    public String toString() {
+        return "Drive{" +
+                "id=" + id +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
+                ", type='" + type + '\'' +
+                ", formFactor='" + formFactor + '\'' +
+                ", transferProtocol='" + transferProtocol + '\'' +
+                ", capacity=" + capacity +
+                ", maxTransferRate=" + maxTransferRate +
+                '}';
+    }
 }

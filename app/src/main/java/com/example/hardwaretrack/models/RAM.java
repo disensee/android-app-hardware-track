@@ -75,4 +75,17 @@ public class RAM {
     public void setFormFactor(String formFactor) {
         this.formFactor = formFactor;
     }
+
+    @Override
+    public String toString() {
+        return "RAM{" +
+                "id=" + id +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
+                ", type='" + type + '\'' +
+                ", capacity=" + capacity +
+                ", speed=" + speed +
+                ", formFactor='" + formFactor + '\'' +
+                '}';
+    }
 }

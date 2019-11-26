@@ -24,20 +24,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
-//        // Create the computer table (for testing)
-//        String testSql = "create table computer (_id INTEGER PRIMARY KEY AUTOINCREMENT, type TEXT, manufacturer TEXT, model TEXT, customBuild INTEGER, processor INTEGER," +
-//                         "graphicsProcessor INTEGER, ram INTEGER, drive1 INTEGER, drive2 INTEGER, drive3 INTEGER)";
-//        db.execSQL(testSql);
-//        Log.d(TAG, testSql);
-//
-
-//        Insert a row into the computer table (for testing)
-//        String testInsert = "insert into computer (type, manufacturer, model, customBuild, processor, graphicsProcessor, ramSlot1, ramSlot2, ramSlot3, ramSlot4, drive1, drive2, drive3) " +
-//                "values ('desktop', 'Asus', 'Z370-A', 1, 1, 1, 1, 1, 1, 1, 1 , 1, 1 );";
-//        db.execSQL(testInsert);
-//        Log.d(TAG, testInsert);
-
         String computerTableSQL = SQLComputerDataAccess.TABLE_COMPUTER_CREATE;
         db.execSQL(computerTableSQL);
         Log.d(TAG, computerTableSQL);

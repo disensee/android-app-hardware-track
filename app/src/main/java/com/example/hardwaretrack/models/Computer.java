@@ -11,21 +11,6 @@ public class Computer {
     private Drive drive;
     private RAM ram;
 
-    @Override
-    public String toString() {
-        return "Computer{" +
-                "id=" + id +
-                ", type='" + type + '\'' +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", model='" + model + '\'' +
-                ", customBuild=" + customBuild +
-                ", processor=" + processor +
-                ", graphicsProcessor=" + graphicsProcessor +
-                ", drive=" + drive +
-                ", ram=" + ram +
-                '}';
-    }
-
     public Computer(long id, String type, String manufacturer, String model, boolean customBuild, CPU processor, GPU graphicsProcessor, Drive drive, RAM ram) {
         this.id = id;
         this.type = type;
@@ -111,4 +96,21 @@ public class Computer {
     public void setRam(RAM ram) {
         this.ram = ram;
     }
+
+
+    @Override
+    public String toString() {
+        return "Computer{" +
+                "id=" + id +
+                ", type='" + type + '\'' +
+                ", manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
+                ", customBuild=" + customBuild +
+                ", processor=" + processor.toString() +
+                ", graphicsProcessor=" + graphicsProcessor.toString() +
+                ", drive=" + drive.toString() +
+                ", ram=" + ram.toString() +
+                '}';
+    }
+
 }

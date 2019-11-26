@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Hardware Track</string>
+    <string name="btnMainComputer">Computers</string>
+    <string name="btnMainCPU">CPUs</string>
+    <string name="btnMainGPU">GPUs</string>
+    <string name="btnMainRAM">RAM</string>
+    <string name="btnMainDrive">Drives</string>
 </resources>
