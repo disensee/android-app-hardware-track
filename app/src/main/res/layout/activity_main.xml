@@ -7,19 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="#3D4051" />
-
 
     <Button
         android:id="@+id/btnAllComputers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="@string/btnMainComputer" />
+        android:text="@string/btnMainComputer"
+        android:onClick="buttonClicked"/>
 
     <Button
         android:id="@+id/btnAllCPUs"
