@@ -6,4 +6,5 @@
     <string name="btnMainRAM">RAM</string>
     <string name="btnMainDrive">Drives</string>
     <string name="btnComputerAdd">Add Computer</string>
+    <string name="btnCPUAdd">Add CPU</string>
 </resources>

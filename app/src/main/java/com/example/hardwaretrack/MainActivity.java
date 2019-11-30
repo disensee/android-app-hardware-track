@@ -38,6 +38,10 @@ public class MainActivity extends AppCompatActivity {
                 i = new Intent(this, ComputerListActivity.class);
                 startActivity(i);
                 break;
+            case "btnAllCPUs":
+                i = new Intent(this, CPUListActivity.class);
+                startActivity(i);
+                break;
         }
     }
 }
