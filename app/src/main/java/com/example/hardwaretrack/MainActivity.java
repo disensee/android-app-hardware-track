@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Computer> pcList = computerDa.getAllComputers();
 
         Computer pc = computerDa.getComputerById(1);
-        Log.d(TAG, pc.toString());
+        Log.d(TAG, pcList.toString());
 
     }
 

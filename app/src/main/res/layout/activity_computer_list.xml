@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+tools:context=".ComputerListActivity">
+
+
+<include
+    layout="@layout/content_computer_list"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ComputerListActivity">
+    android:layout_height="0px"
+    android:layout_weight=".90" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:layout_weight=".10"
+        android:orientation="vertical">
 
-    <include layout="@layout/content_computer_list" />
-
+        <Button
+            android:id="@+id/btnAddComputer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btnComputerAdd"
+            android:textAllCaps="false" />
+    </LinearLayout>
 
 
 </LinearLayout>
