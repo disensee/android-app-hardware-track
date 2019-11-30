@@ -50,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
                 i = new Intent(this, DriveListActivity.class);
                 startActivity(i);
                 break;
+            case "btnAllRAM":
+                i = new Intent(this, RAMListActivity.class);
+                startActivity(i);
+                break;
         }
     }
 }
