@@ -46,6 +46,10 @@ public class MainActivity extends AppCompatActivity {
                 i = new Intent(this, GPUListActivity.class);
                 startActivity(i);
                 break;
+            case "btnAllDrives":
+                i = new Intent(this, DriveListActivity.class);
+                startActivity(i);
+                break;
         }
     }
 }
