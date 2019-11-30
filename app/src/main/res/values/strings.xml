@@ -7,4 +7,9 @@
     <string name="btnMainDrive">Drives</string>
     <string name="btnComputerAdd">Add Computer</string>
     <string name="btnCPUAdd">Add CPU</string>
+    <string name="btnGPUAdd">Add GPU</string>
+    <string name="btDriveAdd">Add Drive</string>
+    <string name="btnRAMAdd">Add RAM</string>
+    <string name="manufacturer">Manufacturer</string>
+    <string name="model">Model</string>
 </resources>

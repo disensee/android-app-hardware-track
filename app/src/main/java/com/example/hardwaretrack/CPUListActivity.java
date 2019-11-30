@@ -57,8 +57,8 @@ public class CPUListActivity extends AppCompatActivity {
                 TextView lblCPUModel = listItemView.findViewById(R.id.lblCPUModel);
 
                 CPU currentCPU = allCPUs.get(position);
-                lblCPUManufacturer.setText("Manufacturer: " + currentCPU.getManufacturer());
-                lblCPUModel.setText("Model: " + currentCPU.getModel().toUpperCase());
+                lblCPUManufacturer.setText(getString(R.string.manufacturer) + ": " + currentCPU.getManufacturer());
+                lblCPUModel.setText(getString(R.string.model) + ": " +  currentCPU.getModel().toUpperCase());
 
                 listItemView.setTag(currentCPU);
                 listItemView.setOnClickListener(new View.OnClickListener() {

@@ -29,20 +29,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="@string/btnMainGPU" />
+        android:text="@string/btnMainGPU"
+        android:onClick="buttonClicked"/>
 
     <Button
         android:id="@+id/btnAllRAM"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="@string/btnMainRAM" />
+        android:text="@string/btnMainRAM"
+        android:onClick="buttonClicked"/>
 
     <Button
         android:id="@+id/btnAllDrives"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="@string/btnMainDrive" />
+        android:text="@string/btnMainDrive"
+        android:onClick="buttonClicked"/>
 
 </LinearLayout>

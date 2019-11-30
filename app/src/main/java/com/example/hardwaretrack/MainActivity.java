@@ -42,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
                 i = new Intent(this, CPUListActivity.class);
                 startActivity(i);
                 break;
+            case "btnAllGPUs":
+                i = new Intent(this, GPUListActivity.class);
+                startActivity(i);
+                break;
         }
     }
 }
