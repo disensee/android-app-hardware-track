@@ -29,7 +29,7 @@
             android:id="@+id/btnAddRAM"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/btnRAMAdd"
+            android:text="@string/btn_ram_add"
             android:textAllCaps="false" />
     </LinearLayout>
 

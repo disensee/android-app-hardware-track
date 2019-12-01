@@ -1,16 +1,27 @@
 <resources>
     <string name="app_name">Hardware Track</string>
-    <string name="btnMainComputer">Computers</string>
-    <string name="btnMainCPU">CPUs</string>
-    <string name="btnMainGPU">GPUs</string>
-    <string name="btnMainRAM">RAM</string>
-    <string name="btnMainDrive">Drives</string>
-    <string name="btnComputerAdd">Add Computer</string>
-    <string name="btnCPUAdd">Add CPU</string>
-    <string name="btnGPUAdd">Add GPU</string>
-    <string name="btnDriveAdd">Add Drive</string>
-    <string name="btnRAMAdd">Add RAM</string>
+    <string name="btn_main_computer">Computers</string>
+    <string name="btn_main_cpu">CPUs</string>
+    <string name="btn_main_gpu">GPUs</string>
+    <string name="btn_main_ram">RAM</string>
+    <string name="btn_main_drive">Drives</string>
+    <string name="btn_computer_add">Add Computer</string>
+    <string name="btn_cpu_add">Add CPU</string>
+    <string name="btn_gpu_add">Add GPU</string>
+    <string name="btn_drive_add">Add Drive</string>
+    <string name="btn_ram_add">Add RAM</string>
     <string name="manufacturer">Manufacturer</string>
     <string name="model">Model</string>
     <string name="type">Type</string>
+    <string name="coreCount">Core Count</string>
+    <string name="thread_count">Thread Count</string>
+    <string name="base_clock">Base Clock</string>
+    <string name="boost_clock">Boost Clock</string>
+    <string name="ghz">GHz</string>
+    <string name="mhz">MHz</string>
+    <string name="gb">GB</string>
+    <string name="cores">Cores</string>
+    <string name="threads">Threads</string>
+    <string name="btnSave">Save</string>
+    <string name="btnDelete">Delete</string>
 </resources>

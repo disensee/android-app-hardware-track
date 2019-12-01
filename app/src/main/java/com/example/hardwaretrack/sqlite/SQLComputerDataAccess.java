@@ -362,7 +362,7 @@ public class SQLComputerDataAccess {
 
         }
 
-        public CPU insertTask(CPU cpu) {
+        public CPU insertCPU(CPU cpu) {
 
             ContentValues values = new ContentValues();
             values.put(COLUMN_CPU_MANUFACTURER, cpu.getManufacturer());

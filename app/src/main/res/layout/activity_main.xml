@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="@string/btnMainComputer"
+        android:text="@string/btn_main_computer"
         android:onClick="buttonClicked"/>
 
     <Button
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="@string/btnMainCPU"
+        android:text="@string/btn_main_cpu"
         android:onClick="buttonClicked"/>
 
     <Button
@@ -29,7 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="@string/btnMainGPU"
+        android:text="@string/btn_main_gpu"
         android:onClick="buttonClicked"/>
 
     <Button
@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="@string/btnMainRAM"
+        android:text="@string/btn_main_ram"
         android:onClick="buttonClicked"/>
 
     <Button
@@ -45,7 +45,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="@string/btnMainDrive"
+        android:text="@string/btn_main_drive"
         android:onClick="buttonClicked"/>
 
 </LinearLayout>

@@ -29,7 +29,7 @@ tools:context=".CPUListActivity">
         android:id="@+id/btnAddCPU"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/btnCPUAdd"
+        android:text="@string/btn_cpu_add"
         android:textAllCaps="false" />
 </LinearLayout>
 
