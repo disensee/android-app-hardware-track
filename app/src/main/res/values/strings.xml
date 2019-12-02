@@ -22,6 +22,18 @@
     <string name="gb">GB</string>
     <string name="cores">Cores</string>
     <string name="threads">Threads</string>
-    <string name="btnSave">Save</string>
-    <string name="btnDelete">Delete</string>
+    <string name="btn_save">Save</string>
+    <string name="btn_delete">Delete</string>
+    <string name="btn_cancel">Cancel</string>
+    <string name="error_manufacturer">Please enter a manufacturer</string>
+    <string name="error_model">Please enter a model</string>
+    <string name="error_core_count">Please enter a core count</string>
+    <string name="error_value_core_count">Invalid core count</string>
+    <string name="error_thread_count">Please enter a thread count</string>
+    <string name="error_value_thread_count">Invalid thread count</string>
+    <string name="error_base_clock">Please enter a base clock value</string>
+    <string name="error_value_base_clock">Invalid base clock value</string>
+    <string name="error_boost_clock">Please enter a boost clock value</string>
+    <string name="error_value_boost_clock">Invalid boost clock value</string>
+    <string name="delete_cpu_confirm">Are you sure you want to delete this CPU?</string>
 </resources>

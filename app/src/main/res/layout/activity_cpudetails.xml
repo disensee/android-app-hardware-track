@@ -152,7 +152,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="@string/btnSave" />
+        android:text="@string/btn_save" />
 
     <Button
         android:id="@+id/btnCPUDelete"
@@ -160,7 +160,7 @@
         android:layout_height="wrap_content"
         android:textAllCaps="true"
         android:textColor="@color/colorRed"
-        android:text="@string/btnDelete" />
+        android:text="@string/btn_delete" />
 
 
 </LinearLayout>

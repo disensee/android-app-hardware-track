@@ -134,17 +134,17 @@ public class CPUDetailsActivity extends AppCompatActivity {
         boolean valid = true;
         if(txtManufacturer.getText().toString().length() == 0){
             valid = false;
-            txtManufacturer.setError("Please enter a manufacturer");
+            txtManufacturer.setError(getText(R.string.error_manufacturer));
         }
 
         if(txtModel.getText().toString().length() == 0){
             valid = false;
-            txtModel.setError("Please enter a model");
+            txtModel.setError(getText(R.string.error_model));
         }
 
         if(txtCoreCount.getText().toString().length() == 0){
             valid = false;
-            txtCoreCount.setError("Please enter a core count");
+            txtCoreCount.setError(getText(R.string.error_core_count));
         }
 
         if(txtCoreCount.getText().toString().length() != 0){
@@ -152,14 +152,14 @@ public class CPUDetailsActivity extends AppCompatActivity {
                 Integer.parseInt(txtCoreCount.getText().toString());
             }catch (NumberFormatException e){
                 Log.d(TAG, "Number Format Exception: " + e);
-                txtCoreCount.setError("Invalid core count");
+                txtCoreCount.setError(getText(R.string.error_value_core_count));
                 valid = false;
             }
         }
 
         if(txtThreadCount.getText().toString().length() == 0){
             valid = false;
-            txtThreadCount.setError("Please enter a thread count");
+            txtThreadCount.setError(getText(R.string.error_thread_count));
         }
 
         if(txtThreadCount.getText().toString().length() != 0){
@@ -167,14 +167,14 @@ public class CPUDetailsActivity extends AppCompatActivity {
                 Integer.parseInt(txtThreadCount.getText().toString());
             }catch (NumberFormatException e){
                 Log.d(TAG, "Number Format Exception: " + e);
-                txtThreadCount.setError("Invalid thread count");
+                txtThreadCount.setError(getText(R.string.error_value_thread_count));
                 valid = false;
             }
         }
 
         if(txtBaseClock.getText().toString().length() == 0){
             valid = false;
-            txtBaseClock.setError("Please enter a base clock value");
+            txtBaseClock.setError(getText(R.string.error_base_clock));
         }
 
         if(txtBaseClock.getText().toString().length() != 0){
@@ -182,13 +182,13 @@ public class CPUDetailsActivity extends AppCompatActivity {
                 Float.parseFloat(txtBaseClock.getText().toString());
             }catch (NumberFormatException e){
                 Log.d(TAG, "Number Format Exception: " + e);
-                txtBaseClock.setError("Please enter a valid base clock value");
+                txtBaseClock.setError(getText(R.string.error_value_base_clock));
                 valid = false;
             }
         }
 
         if(txtBoostClock.getText().toString().length() == 0){
-            txtBoostClock.setError("Please enter a boost clock value");
+            txtBoostClock.setError(getText(R.string.error_boost_clock));
         }
 
         if(txtBoostClock.getText().toString().length() != 0){
@@ -196,7 +196,7 @@ public class CPUDetailsActivity extends AppCompatActivity {
                 Float.parseFloat(txtBoostClock.getText().toString());
             }catch (NumberFormatException e){
                 Log.d(TAG, "Number Format Exception: " + e);
-                txtBoostClock.setError("Please enter a valid boost clock value");
+                txtBoostClock.setError(getText(R.string.error_value_boost_clock));
                 valid = false;
             }
         }
@@ -207,8 +207,8 @@ public class CPUDetailsActivity extends AppCompatActivity {
 
     public void deleteCPU(final CPU cpu){
         AlertDialog.Builder builder = new AlertDialog.Builder(CPUDetailsActivity.this);
-        builder.setMessage("Are you sure you want to delete this CPU?");
-        builder.setPositiveButton("Delete", new DialogInterface.OnClickListener() {
+        builder.setMessage(R.string.delete_cpu_confirm);
+        builder.setPositiveButton(R.string.btn_delete, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 da.deleteCPU(cpu);
@@ -218,7 +218,7 @@ public class CPUDetailsActivity extends AppCompatActivity {
             }
         });
 
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.btn_cancel, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.dismiss();
