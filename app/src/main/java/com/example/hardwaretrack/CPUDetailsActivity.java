@@ -52,7 +52,7 @@ public class CPUDetailsActivity extends AppCompatActivity {
         long id = i.getLongExtra(EXTRA_CPU_ID, 0);
 
         if(id > 0){
-            Log.d(TAG, "Display CPU with the ID of " + id + "in the user interface");
+            Log.d(TAG, "Display CPU with the ID of " + id + " in the user interface");
             cpu = da.getCPUById(id);
             displayCPU(cpu);
         }else{

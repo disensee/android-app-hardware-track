@@ -23,6 +23,7 @@ public class GPUListActivity extends AppCompatActivity {
     private SQLComputerDataAccess da;
     private ArrayList<GPU> allGPUs;
     private Button btnAddGPU;
+    private Button btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,15 @@ public class GPUListActivity extends AppCompatActivity {
         da = new SQLComputerDataAccess(this);
         allGPUs = da.getAllGPUs();
         btnAddGPU = findViewById(R.id.btnAddGPU);
+        btnHome = findViewById(R.id.btnHome);
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(GPUListActivity.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
 
         btnAddGPU.setOnClickListener(new View.OnClickListener() {
             @Override

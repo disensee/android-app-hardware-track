@@ -10,21 +10,27 @@
     <string name="btn_gpu_add">Add GPU</string>
     <string name="btn_drive_add">Add Drive</string>
     <string name="btn_ram_add">Add RAM</string>
-    <string name="manufacturer">Manufacturer</string>
-    <string name="model">Model</string>
-    <string name="type">Type</string>
-    <string name="coreCount">Core Count</string>
-    <string name="thread_count">Thread Count</string>
-    <string name="base_clock">Base Clock</string>
-    <string name="boost_clock">Boost Clock</string>
-    <string name="ghz">GHz</string>
-    <string name="mhz">MHz</string>
-    <string name="gb">GB</string>
-    <string name="cores">Cores</string>
-    <string name="threads">Threads</string>
     <string name="btn_save">Save</string>
     <string name="btn_delete">Delete</string>
     <string name="btn_cancel">Cancel</string>
+    <string name="btn_home">Home</string>
+    <string name="manufacturer">Manufacturer</string>
+    <string name="model">Model</string>
+    <string name="type">Type</string>
+    <string name="core_count">Core Count</string>
+    <string name="thread_count">Thread Count</string>
+    <string name="base_clock">Base Clock</string>
+    <string name="boost_clock">Boost Clock</string>
+    <string name="form_factor">Form Factor</string>
+    <string name="capacity">Storage Capacity</string>
+    <string name="transfer_protocol">Transfer Protocol</string>
+    <string name="max_transfer_rate">Max Transfer Rate</string>
+    <string name="ghz">GHz</string>
+    <string name="mhz">MHz</string>
+    <string name="gb">GB</string>
+    <string name="mb_per_second">MB/s</string>
+    <string name="cores">Cores</string>
+    <string name="threads">Threads</string>
     <string name="error_manufacturer">Please enter a manufacturer</string>
     <string name="error_model">Please enter a model</string>
     <string name="error_core_count">Please enter a core count</string>
@@ -35,5 +41,23 @@
     <string name="error_value_base_clock">Invalid base clock value</string>
     <string name="error_boost_clock">Please enter a boost clock value</string>
     <string name="error_value_boost_clock">Invalid boost clock value</string>
+    <string name="error_capacity">Please enter a storage capacity</string>
+    <string name="error_value_capacity">Invalid storage capacity</string>
+    <string name="error_max_transfer_rate">Please enter a max transfer rate</string>
+    <string name="error_value_max_transfer_rate">Invalid max transfer rate</string>
     <string name="delete_cpu_confirm">Are you sure you want to delete this CPU?</string>
+    <string name="delete_drive_confirm">Are you sure you want to delete this drive?</string>
+    <string-array name="drive_types">
+        <item>SSD</item>
+        <item>HDD</item>
+    </string-array>
+    <string-array name="drive_form_factors">
+        <item>M.2</item>
+        <item>2.5"</item>
+        <item>3.5"</item>
+    </string-array>
+    <string-array name="drive_transfer_protocols">
+        <item>NVMe</item>
+        <item>SATA</item>
+    </string-array>
 </resources>

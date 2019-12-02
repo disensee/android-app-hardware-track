@@ -23,6 +23,7 @@ public class DriveListActivity extends AppCompatActivity {
     private SQLComputerDataAccess da;
     private ArrayList<Drive> allDrives;
     private Button btnAddDrive;
+    private Button btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,15 @@ public class DriveListActivity extends AppCompatActivity {
         da = new SQLComputerDataAccess(this);
         allDrives = da.getAllDrives();
         btnAddDrive = findViewById(R.id.btnAddDrive);
+        btnHome = findViewById(R.id.btnHome);
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(DriveListActivity.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
 
         btnAddDrive.setOnClickListener(new View.OnClickListener() {
             @Override

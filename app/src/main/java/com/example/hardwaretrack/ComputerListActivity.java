@@ -23,6 +23,7 @@ public class ComputerListActivity extends AppCompatActivity {
     private SQLComputerDataAccess da;
     private ArrayList<Computer> allComputers;
     private Button btnAddComputer;
+    private Button btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,15 @@ public class ComputerListActivity extends AppCompatActivity {
         da = new SQLComputerDataAccess(this);
         allComputers = da.getAllComputers();
         btnAddComputer = findViewById(R.id.btnAddComputer);
+        btnHome = findViewById(R.id.btnHome);
+        //Add home button functionality
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(ComputerListActivity.this, MainActivity.class);
+                startActivity(i);
+            }
+        });
         //Add computer button functionality
         btnAddComputer.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -21,11 +21,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         computerDa = new SQLComputerDataAccess(this);
 
-        ArrayList<Computer> pcList = computerDa.getAllComputers();
-
-        Computer pc = computerDa.getComputerById(1);
-        Log.d(TAG, pcList.toString());
-
     }
 
     public void buttonClicked(View v){
