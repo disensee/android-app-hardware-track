@@ -20,7 +20,7 @@ public class RAM {
         this.formFactor = formFactor;
     }
 
-    public RAM(){};
+    public RAM(){}
 
     public long getId() { return id; }
 

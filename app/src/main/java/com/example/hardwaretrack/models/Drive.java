@@ -22,7 +22,7 @@ public class Drive {
         this.maxTransferRate = maxTransferRate;
     }
 
-    public Drive(){};
+    public Drive(){}
 
     public String getManufacturer() {
         return manufacturer;

@@ -20,16 +20,18 @@ public class CPUDetailsActivity extends AppCompatActivity {
 
     public static final String TAG = "CPUDetailsActivity";
     public static final String EXTRA_CPU_ID = "cpuId";
-    SQLComputerDataAccess da;
-    CPU cpu;
-    EditText txtManufacturer;
-    EditText txtModel;
-    EditText txtCoreCount;
-    EditText txtThreadCount;
-    EditText txtBaseClock;
-    EditText txtBoostClock;
-    Button btnSave;
-    Button btnDelete;
+
+    private SQLComputerDataAccess da;
+    private CPU cpu;
+
+    private EditText txtManufacturer;
+    private EditText txtModel;
+    private EditText txtCoreCount;
+    private EditText txtThreadCount;
+    private EditText txtBaseClock;
+    private EditText txtBoostClock;
+    private Button btnSave;
+    private Button btnDelete;
 
 
     @Override
@@ -205,7 +207,7 @@ public class CPUDetailsActivity extends AppCompatActivity {
     }
 
 
-    public void deleteCPU(final CPU cpu){
+    private void deleteCPU(final CPU cpu){
         AlertDialog.Builder builder = new AlertDialog.Builder(CPUDetailsActivity.this);
         builder.setMessage(R.string.delete_cpu_confirm);
         builder.setPositiveButton(R.string.btn_delete, new DialogInterface.OnClickListener() {

@@ -1,9 +1,130 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".RAMDetailsActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/lblRAMManufacturer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/manufacturer" />
+
+    <EditText
+        android:id="@+id/txtRAMManufacturer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textNoSuggestions" />
+
+    <TextView
+        android:id="@+id/lblRAMModel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/model" />
+
+    <EditText
+        android:id="@+id/txtRAMModel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textNoSuggestions" />
+
+    <TextView
+        android:id="@+id/lblRAMType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/type" />
+
+    <Spinner
+        android:id="@+id/spRAMType"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/ram_types"/>
+
+    <TextView
+        android:id="@+id/lblRAMCapacity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/ram_capacity" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/txtRAMCapacity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/lblGb"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:text="@string/gb" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/lblRAMSpeed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/speed" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/txtRAMSpeed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:inputType="number" />
+
+        <TextView
+            android:id="@+id/lblMhz"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:text="@string/mhz" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/lblRAMFormFactor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/form_factor" />
+
+    <Spinner
+        android:id="@+id/spRAMFormFactor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/ram_form_factors"/>
+
+    <Button
+        android:id="@+id/btnRAMSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="@string/btn_save" />
+
+    <Button
+        android:id="@+id/btnRAMDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="true"
+        android:textColor="@color/colorRed"
+        android:text="@string/btn_delete" />
+
+</LinearLayout>

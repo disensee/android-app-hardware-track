@@ -23,8 +23,10 @@
     <string name="boost_clock">Boost Clock</string>
     <string name="form_factor">Form Factor</string>
     <string name="capacity">Storage Capacity</string>
+    <string name="ram_capacity">Capacity</string>
     <string name="transfer_protocol">Transfer Protocol</string>
     <string name="max_transfer_rate">Max Transfer Rate</string>
+    <string name="speed">Speed</string>
     <string name="ghz">GHz</string>
     <string name="mhz">MHz</string>
     <string name="gb">GB</string>
@@ -44,12 +46,17 @@
     <string name="error_value_boost_clock">Invalid boost clock value</string>
     <string name="error_capacity">Please enter a storage capacity</string>
     <string name="error_value_capacity">Invalid storage capacity</string>
+    <string name="error_ram_capacity">Please enter a RAM capacity</string>
+    <string name="error_value_ram_capacity">Invalid RAM capacity</string>
     <string name="error_vram">Please enter a VRAM configuration</string>
     <string name="error_max_transfer_rate">Please enter a max transfer rate</string>
     <string name="error_value_max_transfer_rate">Invalid max transfer rate</string>
+    <string name="error_speed">Please enter a RAM speed value</string>
+    <string name="error_value_speed">Invalid RAM speed value</string>
     <string name="delete_cpu_confirm">Are you sure you want to delete this CPU?</string>
     <string name="delete_drive_confirm">Are you sure you want to delete this drive?</string>
     <string name="delete_gpu_confirm">Are you sure you want to delete this GPU?</string>
+    <string name="delete_ram_confirm">Are you sure you want to delete this RAM?</string>
     <string-array name="drive_types">
         <item>SSD</item>
         <item>HDD</item>
@@ -62,5 +69,15 @@
     <string-array name="drive_transfer_protocols">
         <item>NVMe</item>
         <item>SATA</item>
+    </string-array>
+    <string-array name="ram_types">
+        <item>DDR3</item>
+        <item>DDR4</item>
+        <item>DDR5</item>
+    </string-array>
+    <string-array name="ram_form_factors">
+        <item>DIMM</item>
+        <item>SO-DIMM</item>
+        <item>Soldered</item>
     </string-array>
 </resources>

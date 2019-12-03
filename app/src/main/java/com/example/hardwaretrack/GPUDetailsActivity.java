@@ -19,16 +19,17 @@ public class GPUDetailsActivity extends AppCompatActivity {
     public static final String TAG = "GPUDetailsActivity";
     public static final String EXTRA_GPU_ID = "gpuId";
 
-    SQLComputerDataAccess da;
-    GPU gpu;
-    EditText txtManufacturer;
-    EditText txtModel;
-    EditText txtCoreCount;
-    EditText txtBaseClock;
-    EditText txtBoostClock;
-    EditText txtVRam;
-    Button btnSave;
-    Button btnDelete;
+    private SQLComputerDataAccess da;
+    private GPU gpu;
+
+    private EditText txtManufacturer;
+    private EditText txtModel;
+    private EditText txtCoreCount;
+    private EditText txtBaseClock;
+    private EditText txtBoostClock;
+    private EditText txtVRam;
+    private Button btnSave;
+    private Button btnDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -185,7 +186,7 @@ public class GPUDetailsActivity extends AppCompatActivity {
         return valid;
     }
 
-    public void deleteGPU(final GPU gpu){
+    private void deleteGPU(final GPU gpu){
         AlertDialog.Builder builder = new AlertDialog.Builder(GPUDetailsActivity.this);
         builder.setMessage(R.string.delete_gpu_confirm);
         builder.setPositiveButton(R.string.btn_delete, new DialogInterface.OnClickListener() {

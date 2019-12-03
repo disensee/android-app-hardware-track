@@ -20,7 +20,7 @@ public class GPU {
         this.vRam = vRam;
     }
 
-    public GPU(){};
+    public GPU(){}
 
     public long getId() {
         return id;

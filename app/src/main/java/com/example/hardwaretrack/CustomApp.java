@@ -9,11 +9,9 @@ public class CustomApp extends Application {
     public static final String TAG = "CustomApp";
 
     public static void selectSpinnerItemByValue(Spinner spinner, String value) {
-        SpinnerAdapter adapter = spinner.getAdapter();
-        for (int position = 0; position < adapter.getCount(); position++) {
-            if(adapter.getItem(position) == value) {
-                spinner.setSelection(position);
-                return;
+        for (int i = 0; i < spinner.getCount(); i++) {
+            if(spinner.getItemAtPosition(i).toString().equalsIgnoreCase(value)) {
+                spinner.setSelection(i);
             }
         }
     }

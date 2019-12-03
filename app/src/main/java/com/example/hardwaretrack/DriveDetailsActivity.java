@@ -22,17 +22,18 @@ public class DriveDetailsActivity extends AppCompatActivity {
     public static final String TAG = "DriveDetailsActivity";
     public static final String EXTRA_DRIVE_ID = "driveId";
 
-    SQLComputerDataAccess da;
-    Drive drive;
-    EditText txtManufacturer;
-    EditText txtModel;
-    Spinner spDriveType;
-    Spinner spFormFactor;
-    Spinner spTransferProtocol;
-    EditText txtCapacity;
-    EditText txtMaxTransferRate;
-    Button btnSave;
-    Button btnDelete;
+    private SQLComputerDataAccess da;
+    private Drive drive;
+
+    private EditText txtManufacturer;
+    private EditText txtModel;
+    private Spinner spDriveType;
+    private Spinner spFormFactor;
+    private Spinner spTransferProtocol;
+    private EditText txtCapacity;
+    private EditText txtMaxTransferRate;
+    private Button btnSave;
+    private Button btnDelete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -168,7 +169,7 @@ public class DriveDetailsActivity extends AppCompatActivity {
         return valid;
     }
 
-    public void deleteDrive(final Drive d){
+    private void deleteDrive(final Drive d){
         AlertDialog.Builder builder = new AlertDialog.Builder(DriveDetailsActivity.this);
         builder.setMessage(R.string.delete_drive_confirm);
         builder.setPositiveButton(R.string.btn_delete, new DialogInterface.OnClickListener() {

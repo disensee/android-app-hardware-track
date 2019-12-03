@@ -24,7 +24,7 @@ public class CPU {
         this.boostClock = boostClock;
     }
 
-    public CPU(){};
+    public CPU(){}
 
     public long getId() {
         return id;
