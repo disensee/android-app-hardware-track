@@ -86,15 +86,6 @@ public class Drive {
 
     @Override
     public String toString() {
-        return "Drive{" +
-                "id=" + id +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", model='" + model + '\'' +
-                ", type='" + type + '\'' +
-                ", formFactor='" + formFactor + '\'' +
-                ", transferProtocol='" + transferProtocol + '\'' +
-                ", capacity=" + capacity +
-                ", maxTransferRate=" + maxTransferRate +
-                '}';
+        return this.manufacturer + " " + this.model + " " + this.capacity + " " + "GB";
     }
 }

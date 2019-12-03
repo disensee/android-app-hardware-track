@@ -80,14 +80,6 @@ public class CPU {
 
     @Override
     public String toString() {
-        return "CPU{" +
-                "id=" + id +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", model='" + model + '\'' +
-                ", coreCount=" + coreCount +
-                ", threadCount=" + threadCount +
-                ", baseClock=" + baseClock +
-                ", boostClock=" + boostClock +
-                '}';
+        return this.manufacturer + " " + this.model;
     }
 }

@@ -34,6 +34,11 @@
     <string name="cores">Cores</string>
     <string name="threads">Threads</string>
     <string name="vram">VRAM</string>
+    <string name="custom_build">Custom Build</string>
+    <string name="cpu">CPU</string>
+    <string name="gpu">GPU</string>
+    <string name="drive">Drive</string>
+    <string name="ram">RAM</string>
     <string name="error_manufacturer">Please enter a manufacturer</string>
     <string name="error_model">Please enter a model</string>
     <string name="error_core_count">Please enter a core count</string>
@@ -79,5 +84,9 @@
         <item>DIMM</item>
         <item>SO-DIMM</item>
         <item>Soldered</item>
+    </string-array>
+    <string-array name="computer_types">
+        <item>Laptop</item>
+        <item>Desktop</item>
     </string-array>
 </resources>

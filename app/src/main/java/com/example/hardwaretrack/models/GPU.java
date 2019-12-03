@@ -80,14 +80,6 @@ public class GPU {
 
     @Override
     public String toString() {
-        return "GPU{" +
-                "id=" + id +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", model='" + model + '\'' +
-                ", coreCount=" + coreCount +
-                ", baseClock=" + baseClock +
-                ", boostClock=" + boostClock +
-                ", vRam='" + vRam + '\'' +
-                '}';
+        return this.manufacturer + " " + this.model;
     }
 }

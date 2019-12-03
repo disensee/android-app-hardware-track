@@ -100,17 +100,7 @@ public class Computer {
 
     @Override
     public String toString() {
-        return "Computer{" +
-                "id=" + id +
-                ", type='" + type + '\'' +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", model='" + model + '\'' +
-                ", customBuild=" + customBuild +
-                ", processor=" + processor.toString() +
-                ", graphicsProcessor=" + graphicsProcessor.toString() +
-                ", drive=" + drive.toString() +
-                ", ram=" + ram.toString() +
-                '}';
+        return this.manufacturer + " " + this.model;
     }
 
 }

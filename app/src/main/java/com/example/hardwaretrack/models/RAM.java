@@ -78,14 +78,6 @@ public class RAM {
 
     @Override
     public String toString() {
-        return "RAM{" +
-                "id=" + id +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", model='" + model + '\'' +
-                ", type='" + type + '\'' +
-                ", capacity=" + capacity +
-                ", speed=" + speed +
-                ", formFactor='" + formFactor + '\'' +
-                '}';
+        return this.manufacturer + " " + this.model + " " + this.speed + " " + "MHz" + " " + this.capacity + " " + "GB";
     }
 }
