@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
 
@@ -12,40 +12,40 @@
         android:id="@+id/btnAllComputers"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAllCaps="false"
+        android:onClick="buttonClicked"
         android:text="@string/btn_main_computer"
-        android:onClick="buttonClicked"/>
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btnAllCPUs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAllCaps="false"
+        android:onClick="buttonClicked"
         android:text="@string/btn_main_cpu"
-        android:onClick="buttonClicked"/>
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btnAllGPUs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAllCaps="false"
+        android:onClick="buttonClicked"
         android:text="@string/btn_main_gpu"
-        android:onClick="buttonClicked"/>
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btnAllRAM"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAllCaps="false"
+        android:onClick="buttonClicked"
         android:text="@string/btn_main_ram"
-        android:onClick="buttonClicked"/>
+        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btnAllDrives"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAllCaps="false"
+        android:onClick="buttonClicked"
         android:text="@string/btn_main_drive"
-        android:onClick="buttonClicked"/>
+        android:textAllCaps="false" />
 
 </LinearLayout>

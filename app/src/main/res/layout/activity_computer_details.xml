@@ -96,14 +96,14 @@
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btnGPUSave"
+        android:id="@+id/btnComputerSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:text="@string/btn_save" />
 
     <Button
-        android:id="@+id/btnGPUDelete"
+        android:id="@+id/btnComputerDelete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="true"
