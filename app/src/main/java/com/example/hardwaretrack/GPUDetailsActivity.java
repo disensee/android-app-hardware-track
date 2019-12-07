@@ -56,6 +56,7 @@ public class GPUDetailsActivity extends AppCompatActivity {
         }else{
             Log.d(TAG, "Adding a new GPU");
             gpu = null;
+            btnDelete.setVisibility(View.GONE);
         }
 
         btnSave.setOnClickListener(new View.OnClickListener() {

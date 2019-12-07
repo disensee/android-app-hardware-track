@@ -60,6 +60,7 @@ public class CPUDetailsActivity extends AppCompatActivity {
         }else{
             Log.d(TAG, "Adding new CPU");
             cpu = null;
+            btnDelete.setVisibility(View.GONE);
         }
 
         btnSave.setOnClickListener(new View.OnClickListener() {

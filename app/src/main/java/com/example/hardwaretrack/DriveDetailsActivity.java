@@ -61,6 +61,7 @@ public class DriveDetailsActivity extends AppCompatActivity {
         }else{
             Log.d(TAG, "Adding new drive");
             drive = null;
+            btnDelete.setVisibility(View.GONE);
         }
 
         btnSave.setOnClickListener(new View.OnClickListener(){

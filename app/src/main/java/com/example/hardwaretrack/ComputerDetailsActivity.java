@@ -91,6 +91,7 @@ public class ComputerDetailsActivity extends AppCompatActivity {
         }else{
             Log.d(TAG, "Adding new computer");
             pc = null;
+            btnDelete.setVisibility(View.GONE);
         }
 
         btnSave.setOnClickListener(new View.OnClickListener() {

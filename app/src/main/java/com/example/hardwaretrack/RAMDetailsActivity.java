@@ -57,6 +57,7 @@ public class RAMDetailsActivity extends AppCompatActivity {
         }else{
             Log.d(TAG, "Adding new RAM");
             ram = null;
+            btnDelete.setVisibility(View.GONE);
         }
 
         btnSave.setOnClickListener(new View.OnClickListener() {
