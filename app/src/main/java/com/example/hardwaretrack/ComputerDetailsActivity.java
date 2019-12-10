@@ -190,6 +190,4 @@ public class ComputerDetailsActivity extends AppCompatActivity {
 
         builder.show();
     }
-
-
 }

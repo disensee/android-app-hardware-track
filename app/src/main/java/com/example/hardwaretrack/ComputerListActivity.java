@@ -23,7 +23,6 @@ public class ComputerListActivity extends AppCompatActivity {
     private SQLComputerDataAccess da;
     private ArrayList<Computer> allComputers;
     private Button btnAddComputer;
-    private Button btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +33,7 @@ public class ComputerListActivity extends AppCompatActivity {
         da = new SQLComputerDataAccess(this);
         allComputers = da.getAllComputers();
         btnAddComputer = findViewById(R.id.btnAddComputer);
-        btnHome = findViewById(R.id.btnHome);
-        //Add home button functionality
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(ComputerListActivity.this, MainActivity.class);
-                startActivity(i);
-            }
-        });
+
         //Add computer button functionality
         btnAddComputer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,9 +57,9 @@ public class ComputerListActivity extends AppCompatActivity {
                 TextView lblComputerModel = listItemView.findViewById(R.id.lblComputerModel);
 
                 Computer currentPC = allComputers.get(position);
-                lblComputerType.setText(currentPC.getType());
-                lblComputerManufacturer.setText(currentPC.getManufacturer());
-                lblComputerModel.setText(currentPC.getModel());
+                lblComputerType.setText(getResources().getString(R.string.type) + ":" + " " + currentPC.getType());
+                lblComputerManufacturer.setText(getResources().getString(R.string.manufacturer) + ":" + " " + currentPC.getManufacturer());
+                lblComputerModel.setText(getResources().getString(R.string.model) + ":" + " " + currentPC.getModel());
 
                 listItemView.setTag(currentPC);
                 listItemView.setOnClickListener(new View.OnClickListener() {
@@ -84,5 +75,11 @@ public class ComputerListActivity extends AppCompatActivity {
             }
         };
         lsComputers.setAdapter(adapter);
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent back = new Intent(ComputerListActivity.this, MainActivity.class);
+        startActivity(back);
     }
 }

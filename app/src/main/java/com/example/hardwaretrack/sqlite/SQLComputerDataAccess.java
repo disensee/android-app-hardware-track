@@ -216,7 +216,6 @@ public class SQLComputerDataAccess {
                     long computerDriveId = c.getLong(7);
                     long computerRamId = c.getLong(8);
 
-                    //TODO - Change this query to properly assign components to computer object
                     Computer pc = new Computer(computerId, computerType, computerManufacturer, computerModel, computerCustomBuild, getCPUById(computerProcessorId), getGPUById(computerGpuId), getDriveById(computerDriveId), getRamById(computerRamId)); //assign variables to computer object
                     allComputers.add(pc);//add computer to array list
                     c.moveToNext(); //move to next row -- DON'T FORGET THIS LINE!!!!!!

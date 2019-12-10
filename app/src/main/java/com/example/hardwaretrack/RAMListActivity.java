@@ -23,7 +23,6 @@ public class RAMListActivity extends AppCompatActivity {
     private SQLComputerDataAccess da;
     private ArrayList<RAM> allRAM;
     private Button btnAddRAM;
-    private Button btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,15 +33,6 @@ public class RAMListActivity extends AppCompatActivity {
         da = new SQLComputerDataAccess(this);
         allRAM = da.getAllRAM();
         btnAddRAM = findViewById(R.id.btnAddRAM);
-        btnHome = findViewById(R.id.btnHome);
-
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(RAMListActivity.this, MainActivity.class);
-                startActivity(i);
-            }
-        });
 
         btnAddRAM.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,7 +56,7 @@ public class RAMListActivity extends AppCompatActivity {
 
                 RAM currentRAM = allRAM.get(position);
                 lblRAMManufacturer.setText(getString(R.string.manufacturer) + ": " +currentRAM.getManufacturer());
-                lblRAMModel.setText(getString(R.string.model) + ": " + currentRAM.getModel());
+                lblRAMModel.setText(getString(R.string.model) + ": " + currentRAM.getModel() + " " + currentRAM.getSpeed() + " " + getResources().getString(R.string.mhz));
 
                 listItemView.setTag(currentRAM);
                 listItemView.setOnClickListener(new View.OnClickListener() {
@@ -82,5 +72,11 @@ public class RAMListActivity extends AppCompatActivity {
             }
         };
         lsRAM.setAdapter(adapter);
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent back = new Intent(RAMListActivity.this, MainActivity.class);
+        startActivity(back);
     }
 }

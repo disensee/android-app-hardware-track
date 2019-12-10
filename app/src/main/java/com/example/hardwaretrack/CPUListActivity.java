@@ -25,7 +25,6 @@ public class CPUListActivity extends AppCompatActivity {
     private SQLComputerDataAccess da;
     private ArrayList<CPU> allCPUs;
     private Button btnAddCPU;
-    private Button btnHome;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +35,6 @@ public class CPUListActivity extends AppCompatActivity {
         da = new SQLComputerDataAccess(this);
         allCPUs = da.getAllCPUs();
         btnAddCPU = findViewById(R.id.btnAddCPU);
-        btnHome = findViewById(R.id.btnHome);
-
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(CPUListActivity.this, MainActivity.class);
-                startActivity(i);
-            }
-        });
 
         btnAddCPU.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,5 +74,11 @@ public class CPUListActivity extends AppCompatActivity {
             }
         };
         lsCPUs.setAdapter(adapter);
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent back = new Intent(CPUListActivity.this, MainActivity.class);
+        startActivity(back);
     }
 }

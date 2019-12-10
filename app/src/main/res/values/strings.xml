@@ -71,6 +71,7 @@
         <item>M.2</item>
         <item>2.5"</item>
         <item>3.5"</item>
+        <item>Soldered</item>
     </string-array>
     <string-array name="drive_transfer_protocols">
         <item>NVMe</item>

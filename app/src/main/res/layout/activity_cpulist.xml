@@ -25,13 +25,6 @@ tools:context=".CPUListActivity">
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <Button
-        android:id="@+id/btnHome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_home"
-        android:textAllCaps="false"/>
-
 
     <Button
         android:id="@+id/btnAddCPU"
